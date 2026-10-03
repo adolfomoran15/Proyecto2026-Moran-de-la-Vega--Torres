@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Adolfo Moran de la Vega, Franco Torres">
+    <meta name="description" content="Recetario web que te ayuda a decidir que cocinar. 
+        Cuenta con calculadora de porciones, checklist de ingredientes y distintos filtros">
+    <meta name="keywords" content="recetas, cocina, sopa, sandwich, ensalada">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Betania+Patmos&family=Erica+One&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+    <title>Recetario web S.E.S</title>
+</head>
+
+<body>
+    <div id="contenedor-header">
+        <header id="header-principal">
+            <a href="lore.html" id="logo-sitio">
+                <img src="imagenes/logo_header.png" alt="Sándwich, Sopa o Ensalada">
+            </a>
+            <h1 id="titulo-sitio">Recetario web S.E.S</h1>
+            <nav id="nav-principal">
+                <a href="index.html" id="hlink-inicio" class="link-activo">Inicio</a>
+                <a href="recetas.html" id="hlink-recetas">Recetas</a>
+                <a href="contacto.html" id="hlink-contacto">Contacto</a>
+            </nav>
+        </header>
+    </div>
+    <main id="contenido-principal">
+        <section id="hero">
+            <div id="texto-hero">
+                <h2>¿Qué cocinamos hoy?</h2>
+                <p>Encontrá la receta perfecta para lo que tenés ganas de comer.</p>
+                <div id="buscador">
+                    <label for="input-buscar-recetas">Buscar recetas</label>
+                    <input type="text" id="input-buscar-recetas" name="buscar-recetas"
+                        placeholder="Ej: milanesa, sopa de calabaza..." maxlength="40">
+                    <button type="button" id="boton-buscar" onclick="filtrarReceta()">Buscar</button>
+                </div>
+            </div>
+        </section>
+        <div id="contenedor-destacadas">
+            <section id="recetas-destacadas">
+                <h2>Recetas destacadas</h2>
+                <div id="carrusel-destacadas">
+                    <button type="button" id="boton-flecha-izquierda" onclick="moverCarrusel('izquierda')">‹</button>
+                    <div id="ventana-destacadas">
+                        <div id="lista-destacadas">
+                        </div>
+                    </div>
+                    <button type="button" id="boton-flecha-derecha" onclick="moverCarrusel('derecha')">›</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <div id="contenedor-footer">
+        <footer id="footer-principal">
+            <nav id="nav-texto">
+                <h6>S.E.S. cocina</h6>
+                <p id="frase-footer">La cocina no discute teorías, las prueba.</p>
+            </nav>
+
+            <nav id="nav-sitio">
+                <a href="index.html" id="flink-inicio" class="link-activo">Inicio</a>
+                <a href="recetas.html" id="flink-recetas">Recetas</a>
+                <a href="contacto.html" id="flink-contacto">Contacto</a>
+            </nav>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

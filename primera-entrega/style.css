@@ -1,0 +1,1018 @@
+:root {
+    
+    --color-header: #152959;
+    --color-principal: #356B7D;
+    --color-secundario: #6F9EAC;
+    --color-fondo: #F7F4EE;
+    --color-texto: #263238;
+    --color-blanco: #FFFFFF;
+    --color-borde: #D8CFC3;
+    --color-boton: rgba(0, 77, 231, 0.76);
+
+    --fuente-titulos: 'Playfair Display', serif;
+    --fuente-texto: 'Montserrat', sans-serif;
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin:0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+}
+header{
+    background-color:var(--color-header);
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 1rem 2rem;
+}
+header h1 {
+        margin: 0;  
+        font-family: var(--fuente-texto);
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: var(--color-blanco);
+    }
+
+header #nav-principal {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        a{
+            text-decoration: none;
+            font-size: 1rem;
+            position: relative; 
+            padding-bottom: 0.4rem;
+            transition: color 0.3s ease;
+
+            &:link, &:visited{ 
+                color: var(--color-blanco);
+            }
+
+           &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0.05rem;
+            background-color: var(--color-blanco);
+            transform: scaleX(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+            }
+
+            &:hover, &:focus, &:active {
+                color: var(--color-secundario);
+
+                &::after {
+                    transform: scaleX(1);
+                    transform-origin: bottom;
+                }
+            }
+        }
+
+        &:not(:has(a:hover, a:focus, a:active)) a.link-activo {
+            color: var(--color-secundario);
+
+            &::after {
+                transform: scaleX(1);
+                transform-origin: bottom;
+            }
+        }
+    }
+header #logo-sitio{
+    margin: 0;
+}
+header #logo-sitio a{
+    display: block;
+}
+header #logo-sitio img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+    transform: rotate(-4deg);
+
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+header #logo-sitio img:hover{
+    transform: rotate(0deg) scale(1.05);
+}
+
+#titulo-sitio {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    font-style: oblique;
+    color: var(--color-blanco);
+}
+
+footer {
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+    width: 100%;
+    box-sizing: border-box;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 2rem 3rem;
+}
+
+
+footer #nav-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+footer #nav-texto h6 {
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+footer #nav-texto p {
+    margin: 0;
+    font-size: 0.85rem;
+}
+
+footer #nav-sitio {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+footer #nav-sitio h6 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+footer #nav-sitio a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    position: relative;
+    padding-bottom: 0.3rem;
+    color: var(--color-blanco);
+
+    transition: color 0.3s ease;
+}
+
+footer #nav-sitio a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 0;
+    height: 2px;
+
+    background-color: var(--color-blanco);
+
+    transition: width 0.3s ease;
+}
+
+footer #nav-sitio a:hover,
+footer #nav-sitio a:focus {
+    color: var(--color-secundario);
+}
+
+footer #nav-sitio a:hover::after,
+footer #nav-sitio a:focus::after {
+    width: 100%;
+}
+
+#hero {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    margin-top: 2rem;
+
+    background-image: url("imagenes/imagen_main_index.jpg");
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#texto-hero {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    text-align: center;
+    color: var(--color-blanco);
+}
+
+#hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.511);
+}
+
+#texto-hero h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.2rem;
+    font-weight: 600;
+    font-style: italic;
+    margin: 0 0 1rem;
+}
+
+#contenedor-destacadas{
+    width: 100%;
+    padding: 5rem 0 3.5rem;
+}
+#recetas-destacadas{
+    width: 100%;
+    text-align: center;
+}
+#recetas-destacadas h2 {
+    font-family: var(--fuente-texto);
+    color: var(--color-texto);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+#carrusel-destacadas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+#ventana-destacadas{
+    width: 53%;
+    overflow: hidden;
+}
+
+#lista-destacadas{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    transition: transform 0.4s ease;
+}
+.tarjeta-receta{
+ flex: 0 0 100%;
+    background-color: var(--color-blanco);
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.10);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.tarjeta-receta img {
+    width: 100%;
+    height: 243px;
+    object-fit: cover;
+    display: block;
+}
+.tarjeta-receta h3{
+    font-family: var(--fuente-texto);
+    font-size: 1.6rem;
+    margin: 1.2rem 1.5rem 0.5rem;
+    color: var(--color-texto);
+}
+
+.tarjeta-receta p{
+    margin: 0 1.5rem 1.2rem;
+    line-height: 1.5;
+}
+
+.boton-ver-receta-destacada {
+    width: 23%;
+    align-self: center;
+    font-family: var(--fuente-texto);
+    margin: 0 1.5rem 1.5rem;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: auto;
+}
+
+.boton-ver-receta {
+    font-family: var(--fuente-texto);
+    margin: 0 1.5rem 1.5rem;
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: auto;
+}
+
+.boton-ver-receta:hover, .boton-ver-receta-destacada:hover {
+    background-color: var(--color-principal);
+    transform: translateY(-2px);
+}
+
+#boton-flecha-izquierda,
+#boton-flecha-derecha {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+
+    font-size: 1.8rem;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#boton-flecha-izquierda:hover,
+#boton-flecha-derecha:hover {
+    background-color: var(--color-principal);
+    transform: scale(1.08);
+
+}
+
+
+#buscador{
+display: flex;
+justify-content: center;
+gap: 1rem;
+align-items: center;
+}
+
+#input-buscar-recetas{
+    width: 50%;
+    padding: 0.6rem 0.4rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background-color: var(--color-fondo);
+    font-family: var(--fuente-texto);
+    font-size: 0.88rem;
+}
+
+#input-buscar-recetas:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+}
+
+#input-buscar-recetas::placeholder{
+    font-style: italic;
+}
+#boton-buscar{
+    background-color: var(--color-header);
+    
+    color: var(--color-blanco);
+    border: 1px solid var(--color-blanco);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: var(--fuente-texto);
+}
+
+#boton-buscar:hover{
+background-color: var(--color-principal);
+transform: translateY(-2px);
+transition: all 0.5s ease;
+
+}
+
+#contenedor-catalogo {
+    flex: 1;
+    padding: 2rem 3rem 2rem 0;
+}
+
+#grilla-recetas{
+    
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+#contenedor-filtros {
+    width: 21.5%;
+    padding: 2rem 0rem 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+}
+
+#contenido-principal.pagina-recetas {
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+}
+
+#filtros {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 15px;
+    padding: 3px;
+    box-shadow: 0 4px 15px rgba(0, 28, 138, 0.37);
+}
+
+#filtros h2 {
+    margin: 0 0 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    text-align: center;
+}
+
+#filtros h3, #filtros .titulo-filtro {
+    margin: 0 0 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-principal);
+    display: block;
+}
+
+#filtro-categoria,
+#filtro-ingrediente,
+#filtro-teoria,
+#filtro-tiempo {
+    margin-bottom: 1.5rem;
+}
+
+#filtros label {
+    display: block;
+    margin: 0.7rem 0;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+#filtros label input[type="checkbox"]{
+    margin-right: 0.5rem;
+    accent-color: var(--color-header);
+}
+
+#select-tiempo, 
+#select-categoria, 
+#select-tipo-plato {
+    display: block;
+    width: 90%;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 7px;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-texto);
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin: 0 auto;
+    
+}
+
+#select-tiempo:focus,
+#select-categoria:focus, 
+#select-tipo-plato:focus {
+    outline: none;
+    border-color: var(--color-secundario);
+}
+
+#botones-filtros {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+#boton-aplicar-filtros,#boton-limpiar-filtros{
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 7px;
+    font-family: var(--fuente-texto);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    
+}
+
+#boton-aplicar-filtros{
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+}
+#boton-aplicar-filtros:hover,#boton-limpiar-filtros:hover {
+    transform: translateY(-2px);
+}
+
+#boton-limpiar-filtros{
+    background-color: rgba(194, 0, 0, 0.922);
+    color: var(--color-blanco);
+}
+
+/* SECCION REDES SOCIALES */
+.icono-red-social {
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+}
+
+.redes-sociales {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.redes-sociales p {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-texto);
+}
+    
+.redes-sociales-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+}
+    
+.redes-sociales-items article {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background-color: var(--color-blanco);
+    padding: 0.8rem 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    border: 1px solid var(--color-borde);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* SECCION FORMULARIO DE CONTACTO */
+.contenedor-texto{
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--color-texto);
+    margin: 2rem 0;
+}
+
+.contenedor-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto 2rem;
+    text-align: left;
+    gap: 0.4rem;
+}
+
+.contenedor-form label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-texto);
+    margin-top: 0.6rem;
+}
+
+/* INPUTS */
+.contenedor-form input[type="text"],
+.contenedor-form input[type="email"] {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background-color: var(--color-blanco);
+    font-family: var(--fuente-texto);
+    font-size: 0.95rem;
+
+    &:focus {
+        outline: none;
+        border-color: var(--color-secundario);
+    }
+}
+
+.contenedor-form #mensaje {
+        padding-bottom: 3rem;
+}
+
+/* BOTON ENVIAR */
+.contenedor-form #enviar {
+    align-self: center;
+    margin-top: 1rem;
+    padding: 0.7rem 1.8rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+    font-family: var(--fuente-texto);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+        background-color: var(--color-principal);
+        transform: translateY(-2px);
+    }
+}
+
+/* SECCION INFORMACION RECETA */
+#informacion-recetas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2.5rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* IMAGEN(izquierda) */
+#informacion-recetas .imagen-receta {
+    flex: 0 0 40%;
+    max-width: 32rem;
+    margin: 1rem 0 0 1rem;
+        
+    img {
+        width: 100%;
+        height: auto;
+        border-radius: 15px;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+/* TEXTO(derecha) */
+#informacion-recetas #texto-receta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.etiqueta-plato {
+    display: inline-block;
+    padding: 0.25rem 0.75rem; 
+    background-color: var(--color-principal); 
+    color: var(--color-blanco); 
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 20px; 
+    text-transform: capitalize; 
+    width: fit-content; 
+}
+
+.etiqueta-plato h3 {
+    margin: 0;
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: var(--fuente-titulos);
+    color: var(--color-texto);
+}
+
+.etiqueta-plato p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--color-texto);
+}
+
+.etiqueta-plato hr {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--color-borde);
+    margin: 0.8rem 0;
+}
+
+/* MINUTOS Y PORCIONES */
+/* tambien estan uno al lado del otro */
+.datos-adicionales {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 3rem; 
+}
+
+.datos-adicionales .dato {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.datos-adicionales .dato h6 {
+    margin: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-principal);
+    letter-spacing: 0.05em;
+}
+
+.datos-adicionales .dato p {
+    align-self: center;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+/* SECCION PREPARACION */
+#receta {
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    align-items: flex-start; 
+}
+
+#receta .columna-izquierda {
+    flex: 0 0 35%; 
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#receta .columna-derecha {
+    flex: 1; 
+}
+
+/* CALCULADORA PORCIONES */
+/* parte izquierda */
+.calculadora-porciones {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde);
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 20em;
+    margin: 0 0 1.5rem 1.5rem; 
+}
+
+.calculadora-porciones h5 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    color: var(--color-texto);
+}
+
+.calculadora-porciones .controles-calculadora {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.calculadora-porciones .controles-calculadora input[type="number"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 6px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.calculadora-porciones .controles-calculadora button {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    align-self: center;
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+    font-family: var(--fuente-texto);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--color-principal);
+    }
+}
+
+/* LISTA DE INGREDIENTES */
+/* parte izquierda */
+.lista-ingredientes {
+    margin: 0 0 0 1.5rem;   
+}
+
+.lista-ingredientes h5{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    color: var(--color-texto);
+}
+
+.lista-ingredientes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.lista-ingredientes ul li {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+}
+
+.lista-ingredientes ul li input[type="checkbox"] {
+    accent-color: var(--color-principal);
+    width: 0.9rem;
+    height: 0.9rem;
+    cursor: pointer;
+}
+
+/* LISTA DE PASOS */
+/* parte derecha */
+.lista-pasos {
+    list-style: none; 
+    counter-reset: paso-counter;
+    padding: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.lista-pasos li {
+    counter-increment: paso-counter; /* contador de pasos */
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-left: 3.5rem; 
+    line-height: 1.5;
+    font-size: 1rem;
+
+    /*numero de paso*/
+    &::before {
+        content: counter(paso-counter);/* incrementar el contador */
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translateY(-15%); /* ajustar la posición del número */
+        font-family: var(--fuente-titulos);
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-secundario);
+        width: 1.5rem;
+        text-align: center;
+    }
+    
+    /*separador horizontal*/
+    &::after {
+        content: "";
+        position: absolute;
+        left: 2.2rem;
+        top: 0.1rem;
+        bottom: 0.1rem;
+        width: 1px;
+        background-color: var(--color-borde);
+    }
+}
+
+.separador{/*para que los hr no ocupen todo el ancho*/
+    width: 98%;
+    height: 1px;
+    background-color: var(--color-borde);
+    border: 0;
+    margin: 0.5rem auto;
+}
+
+/*SECCION OTRAS RECETAS*/
+/* texto superior */
+.texto-superior {/* alinearlos horizontalmente */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.texto-superior h5 {
+    margin: 0 0 0 1.5rem;
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    color: var(--color-texto);
+}
+
+.texto-superior a {/* referencia a recetas */
+    margin: 0 1.5rem 0 0;
+    color: var(--color-secundario);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--color-principal);
+    }
+}
+
+/* mas recetas */
+.otras-recetas{
+    width: 100%;
+    max-width: 70em;
+    margin: 3rem auto 0 auto;
+    padding: 0 1rem;
+}
+
+.otras-recetas .grid-recetas {/*hacer un grid para previzualizar 3 recetas*/
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: "receta-1 receta-2 receta-3";
+    gap: 1.5rem;
+}
+
+.otras-recetas .grid-recetas .receta-corta{/*para cada receta*/
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.otras-recetas .grid-recetas .receta-corta .contenedor-imagen{/*imagen de la receta*/
+    width: 100%;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 10px;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.otras-recetas .grid-recetas .receta-corta h3 {/*titulo de la receta*/
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: 1rem;
+    color: var(--color-texto);
+}
+
+.otras-recetas .grid-recetas .receta-corta p {/*minutos que tarda*/
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--color-secundario);
+    font-weight: 600;
+}
+
+/* INSERCION DINAMICA */
+#cantidad-ingrediente{
+    display: inline;
+    color: var(--color-principal);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* INSERCION DINAMICA */
+#nombre-ingrediente{
+    display: inline;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+#boton-volver-recetas {
+    align-self: flex-start;
+    margin: 2rem 0 1.5rem 1.5rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    background-color: var(--color-blanco);
+    color: var(--color-header);
+    font-family: var(--fuente-texto);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+#boton-volver-recetas:hover {
+    background-color: var(--color-header);
+    color: var(--color-blanco);
+    transform: translateX(-3px);
+}
