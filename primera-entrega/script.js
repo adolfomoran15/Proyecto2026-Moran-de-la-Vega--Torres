@@ -149,7 +149,7 @@ const recetas = [
             { tipoIngrediente: 'polvo', nombre: "Polvo de hornear", cantidad: 0.25, unidad: "cucharadita" }
         ],
         minutos: 30,
-        imagen: "imagenes/chipa.png",
+        imagen: "imagenes/Chipa.png",
         pasos: [
             "En un bol, integrar la fécula de mandioca, los quesos rallados/picados y el polvo de hornear.",
             "Hacer un hueco en el centro y colocar la manteca blanda, el medio huevo batido y un chorrito de leche.",
