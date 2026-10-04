@@ -14,9 +14,10 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
     <link rel="stylesheet" href="style.css" type="text/css">
     <title>Recetario web S.E.S</title>
-</head> <!-- link a CSS y Javascript  -->
+</head>
 
 <body onload="mostrarReceta(), cantidadPorciones(), recetasCortas();">
     <div id="contenedor-header">
@@ -39,18 +40,17 @@
         </button>
         <section id="informacion-recetas">
             <aside id="img-receta" class="imagen-receta">
-                <!--IMAGEN-->
             </aside>
 
             <div id="texto-receta">
 
-                <span id="categoria-receta" class="etiqueta-plato"><!--TIPO PLATO--></span>
+                <span id="categoria-receta" class="etiqueta-plato"></span>
 
                 <h3 id="nombre-plato">
-                    <!--TITULO DEL PLATO-->
+
                 </h3>
                 <p id="descripcion-receta">
-                    <!--parrafo del plato-->
+
                 </p>
 
                 <hr>
@@ -58,11 +58,11 @@
                 <div class="datos-adicionales">
                     <div class="dato">
                         <h6>TIEMPO</h6>
-                        <p id="tiempo"><!--TIEMPO ESTIMADO--></p>
+                        <p id="tiempo"></p>
                     </div>
                     <div class="dato">
                         <h6>CANTIDAD PORCIONES</h6>
-                        <p id="cantidad"><!--CANTIDAD--></p>
+                        <p id="cantidad"></p>
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                     </h5>
                     <div class="controles-calculadora">
                         <label for="input-porciones" class="label-calculadora">Calculadora</label>
-                        <input type="number" value="1" id="input-porciones" min="1"
+                        <input type="number" value="1" id="input-porciones" min="1" size="5"
                             aria-label="Número base de porciones">
                         <button type="button" aria-label="Calcular ingredientes para el número de porciones elegido"
                             onclick="cantidadPorciones(), mostrarReceta();">
@@ -90,9 +90,7 @@
                         Ingredientes
                     </h5>
                     <ul id="ingredientes">
-                        <!--LISTA DE INGREDIENTES-->
-                        <!--para que los ingredientes puedan tener la checkbox-->
-                        <!--tiene que ser con input type checkbox, no olvidar el label-->
+
                     </ul>
                 </div>
             </div>
@@ -102,8 +100,7 @@
                     Preparación
                 </h5>
                 <ol id="pasos" class="lista-pasos">
-                    <!--LISTA DE PASOS-->
-                    <!--recodar el estilo para css-->
+
                 </ol>
             </div>
         </div>
@@ -118,14 +115,14 @@
                 <a href="recetas.html" class="ver-todo">Ver todo &rarr;</a>
             </div>
             <div id="recetas-cortas" class="grid-recetas">
-                <!--CARGADO DINAMICO-->
+
             </div>
         </div>
     </main>
 
     <div id="contenedor-footer">
         <footer id="footer-principal">
-            <!-- IMAGEN -->
+
             <nav id="nav-texto">
                 <h6>S.E.S. cocina</h6>
                 <p id="frase-footer">La cocina no discute teorías, las prueba.</p>
