@@ -39,7 +39,7 @@ const recetas = [
             { tipoIngrediente: 'mayonesa', nombre: "Mayonesa", cantidad: 1, unidad: "cucharada" }
         ],
         minutos: 15,
-        imagen: "imagenes/Sandwitc-Milanesa.jpg",
+        imagen: "imagenes/Sandwich-Milanesa.jpg",
         pasos: [
             "Cortar el pan al medio y tostar apenas la parte interior si se desea.",
             "Untar ambas caras de la miga con mayonesa.",
@@ -208,7 +208,7 @@ const recetas = [
         imagen: "imagenes/Bife-Chorizo.jpg",
         pasos: [
             "Preparar la parrilla con brasas al rojo vivo y asegurar una temperatura media-alta (soportar 4-5 segundos la mano sobre el fierro).",
-            "Salalar el bife de ambos lados justo antes de llevarlo a la parrilla.",
+            "Salar el bife de ambos lados justo antes de llevarlo a la parrilla.",
             "Cocinar durante 12 a 15 minutos sin moverlo hasta que empiecen a asomar gotitas de jugo en la superficie.",
             "Dar vuelta con pinza (sin pinchar) y cocinar por 8 a 10 minutos más para lograr un punto medio.",
             "Dejar reposar 2 minutos sobre una tabla antes de cortar para que se redistribuyan los jugos."
@@ -263,7 +263,7 @@ const recetas = [
         imagen: "imagenes/Empanadas.jpg",
         pasos: [
             "Picar la cebolla fina y rehogarla en una sartén con grasa o aceite hasta que transparente.",
-            "Agregar la carne picada, salpimentar y condentar con comino y pimentón dulce. Cocinar solo hasta que pierda el color rojo.",
+            "Agregar la carne picada, salpimentar y condimentar con comino y pimentón dulce. Cocinar solo hasta que pierda el color rojo.",
             "Retirar del fuego y dejar enfriar completamente el relleno en la heladera.",
             "Mezclar con el huevo duro y las aceitunas picadas.",
             "Repartir el relleno en las 2 tapas, humedecer los bordes, cerrar bien y hacer el repulgo.",
@@ -324,7 +324,7 @@ const recetas = [
         imagen: "imagenes/Milanesas-Pure.png",
         pasos: [
             "Pelar las papas, cortarlas en trozos parejos y ponerlas a hervir en abundante agua con sal hasta que estén bien tiernas.",
-            "Pasar la carne por el huevo batido condientado con provenzal y luego empanar presionando con firmeza.",
+            "Pasar la carne por el huevo batido condimentado con provenzal y luego empanar presionando con firmeza.",
             "Freír la milanesa en abundante aceite caliente (o hornear a fuego fuerte) hasta que esté dorada de ambos lados.",
             "Colar las papas calientes, pisarlas inmediatamente e incorporar la manteca y la leche tibia hasta lograr un puré cremoso.",
             "Servir la milanesa crocante acompañada por la porción de puré salpimentado a gusto."
@@ -337,15 +337,15 @@ const recetas = [
  * Mostrar la receta en la pagina calcular-receta
  * @method mostrarReceta
  */
-mostrarReceta = () => {
+ const mostrarReceta = () => {
     let contenidoPasos = "";
-    // 1. Obtener toda la cadena de parámetros de la URL actual
+    
     const queryString = window.location.search;
 
-    // 2. Crear una instancia de URLSearchParams para manipularlo fácilmente
+    
     const urlParams = new URLSearchParams(queryString);
 
-    // 3. Obtener el valor asociándolo a la clave del parámetro
+   
     const idReceta = urlParams.get('receta');
 
     let infoReceta = recetas.find(receta => receta.id === idReceta);
@@ -375,7 +375,7 @@ mostrarReceta = () => {
         
         infoReceta.pasos.forEach((paso, num) => {
         contenidoPasos += `
-        <li aria-label="paso ${num} ${paso}">
+        <li aria-label="paso ${num + 1} ${paso}">
             ${paso}
         </li>
     `;
@@ -390,7 +390,7 @@ mostrarReceta = () => {
  * @method verReceta
  * @param idReceta - nombre de la receta
  */
-verReceta = (idReceta) => {
+const verReceta = (idReceta) => {
     window.location.href = `calcular_receta.html?receta=${idReceta}`;
 }
 
@@ -398,7 +398,7 @@ verReceta = (idReceta) => {
  * Mostrar la cantidad de porciones que se estan calculando
  * @method cantidadPorciones
  */
-cantidadPorciones = () =>{
+const cantidadPorciones = () =>{
     document.getElementById('cantidad').innerText = document.getElementById('input-porciones').value;
 }
 
@@ -407,7 +407,7 @@ cantidadPorciones = () =>{
  * @method mostrarIngredientes
  * @param listIngredientes - lista de los ingredientes de una receta
  */
-mostrarIngredientes = (listIngredientes) => {
+const mostrarIngredientes = (listIngredientes) => {
     let contenido = "";
     let cantidad = document.getElementById('input-porciones').value;
     listIngredientes.forEach((ingr, num) => {
@@ -418,15 +418,14 @@ mostrarIngredientes = (listIngredientes) => {
         };
 
         contenido += 
-                            `
-                            <li aria-label="ingrediente ${listIngredientes[num].nombre}">
-                                <label>
-                                    <input type="checkbox" id="ingrediente-${num}">
-                                    <span class="cantidad-ingrediente">${total} ${listIngredientes[num].unidad}</span>
-                                    <span class="nombre-ingrediente"> ${listIngredientes[num].nombre}</span>
-                                </label>
-                            </li>
-                            `
+         `
+                <li aria-label="ingrediente ${listIngredientes[num].nombre}">
+                    <label for="ingrediente-${num}">
+                    <input type="checkbox" id="ingrediente-${num}">
+                    <span class="cantidad-ingrediente">${total} ${listIngredientes[num].unidad}</span>
+                    <span class="nombre-ingrediente"> ${listIngredientes[num].nombre}</span>
+                    </label>
+                </li>`
         });
 
     document.getElementById('ingredientes').innerHTML = contenido;
@@ -436,7 +435,7 @@ mostrarIngredientes = (listIngredientes) => {
  * Mostrar otras recetas cortas de forma aleatoria
  * @method recetasCortas
  */
-recetasCortas = () => {
+const recetasCortas = () => {
     let contenido = "";
     const numerosUnicos = new Set();
 
@@ -478,7 +477,7 @@ recetasCortas = () => {
  * Filtra las recetas por valores ingresados por el usuario(categoria, tiempo, teoria, ingredientes)
  * @method aplicarFiltros
  */
-aplicarFiltros = () => {
+const aplicarFiltros = () => {
     let newRecetas = recetas;
     let categoria = document.getElementById('select-categoria').value;
     let tiempo = document.getElementById('select-tiempo').value;
@@ -689,3 +688,20 @@ const limpiarFiltros = () => {
 const volverRecetas = () => {
     window.location.href = "recetas.html";
 };
+/**
+ * Valida que la cantidad de porciones ingresada sea un número válido y mayor a cero.
+ * Si no lo es, avisa al usuario con un alert y vacía el campo.
+ * @method validarPorciones
+ * @return {boolean} true si el valor es válido, false si no lo es
+ */
+const validarPorciones = () => {
+    const input = document.getElementById('input-porciones');
+    const valor = parseFloat(input.value);
+
+    if(isNaN(valor) || valor <=0){
+        alert("Ingresá una cantidad de porciones válida (un número mayor a cero).");
+        input.value = "";
+        return false;
+    }
+    return true;
+}
