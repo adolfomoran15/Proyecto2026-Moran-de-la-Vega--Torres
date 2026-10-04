@@ -39,4 +39,4 @@ _La teoría culinaria que todavía no resolvimos._
 
 ## Cómo ver el proyecto
 
-🔗 **Link a GitHub Pages:** [pendiente de publicación](#)
+🔗 **Link a GitHub Pages:** [Recetario S.E.S](https://adolfomoran15.github.io/Proyecto2026-Moran-de-la-Vega-Torres/primera-entrega/index.html)
