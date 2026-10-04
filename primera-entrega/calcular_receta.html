@@ -79,13 +79,13 @@
                         <input type="number" value="1" id="input-porciones" min="1" size="5"
                             aria-label="Número base de porciones">
                         <button type="button" aria-label="Calcular ingredientes para el número de porciones elegido"
-                            onclick="cantidadPorciones(), mostrarReceta();">
+                            onclick="if (validarPorciones()) { cantidadPorciones(); mostrarReceta(); }">
                             Calcular
                         </button>
                     </div>
                 </div>
 
-                <div class="lista-ingredientes">
+                <div class=" lista-ingredientes">
                     <h5>
                         Ingredientes
                     </h5>

@@ -337,7 +337,7 @@ const recetas = [
  * Mostrar la receta en la pagina calcular-receta
  * @method mostrarReceta
  */
-mostrarReceta = () => {
+ const mostrarReceta = () => {
     let contenidoPasos = "";
     
     const queryString = window.location.search;
@@ -390,7 +390,7 @@ mostrarReceta = () => {
  * @method verReceta
  * @param idReceta - nombre de la receta
  */
-verReceta = (idReceta) => {
+const verReceta = (idReceta) => {
     window.location.href = `calcular_receta.html?receta=${idReceta}`;
 }
 
@@ -398,7 +398,7 @@ verReceta = (idReceta) => {
  * Mostrar la cantidad de porciones que se estan calculando
  * @method cantidadPorciones
  */
-cantidadPorciones = () =>{
+const cantidadPorciones = () =>{
     document.getElementById('cantidad').innerText = document.getElementById('input-porciones').value;
 }
 
@@ -407,7 +407,7 @@ cantidadPorciones = () =>{
  * @method mostrarIngredientes
  * @param listIngredientes - lista de los ingredientes de una receta
  */
-mostrarIngredientes = (listIngredientes) => {
+const mostrarIngredientes = (listIngredientes) => {
     let contenido = "";
     let cantidad = document.getElementById('input-porciones').value;
     listIngredientes.forEach((ingr, num) => {
@@ -435,7 +435,7 @@ mostrarIngredientes = (listIngredientes) => {
  * Mostrar otras recetas cortas de forma aleatoria
  * @method recetasCortas
  */
-recetasCortas = () => {
+const recetasCortas = () => {
     let contenido = "";
     const numerosUnicos = new Set();
 
@@ -477,7 +477,7 @@ recetasCortas = () => {
  * Filtra las recetas por valores ingresados por el usuario(categoria, tiempo, teoria, ingredientes)
  * @method aplicarFiltros
  */
-aplicarFiltros = () => {
+const aplicarFiltros = () => {
     let newRecetas = recetas;
     let categoria = document.getElementById('select-categoria').value;
     let tiempo = document.getElementById('select-tiempo').value;
@@ -688,3 +688,20 @@ const limpiarFiltros = () => {
 const volverRecetas = () => {
     window.location.href = "recetas.html";
 };
+/**
+ * Valida que la cantidad de porciones ingresada sea un número válido y mayor a cero.
+ * Si no lo es, avisa al usuario con un alert y vacía el campo.
+ * @method validarPorciones
+ * @return {boolean} true si el valor es válido, false si no lo es
+ */
+const validarPorciones = () => {
+    const input = document.getElementById('input-porciones');
+    const valor = parseFloat(input.value);
+
+    if(isNaN(valor) || valor <=0){
+        alert("Ingresá una cantidad de porciones válida (un número mayor a cero).");
+        input.value = "";
+        return false;
+    }
+    return true;
+}
