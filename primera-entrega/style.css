@@ -1,5 +1,5 @@
 :root {
-    
+
     --color-header: #152959;
     --color-principal: #356B7D;
     --color-secundario: #6F9EAC;
@@ -19,46 +19,49 @@
 
 
 body {
-    margin:0;
+    margin: 0;
     background-color: var(--color-fondo);
     color: var(--color-texto);
     font-family: var(--fuente-texto);
 }
-header{
-    background-color:var(--color-header);
+
+header {
+    background-color: var(--color-header);
     width: 100%;
     box-sizing: border-box;
 
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem 2rem;
 }
+
 header h1 {
-        margin: 0;  
-        font-family: var(--fuente-texto);
-        font-size: 1.8rem;
-        font-weight: 600;
-        color: var(--color-blanco);
-    }
+    margin: 0;
+    font-family: var(--fuente-texto);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--color-blanco);
+}
 
 header #nav-principal {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
 
-        a{
-            text-decoration: none;
-            font-size: 1rem;
-            position: relative; 
-            padding-bottom: 0.4rem;
-            transition: color 0.3s ease;
+    a {
+        text-decoration: none;
+        font-size: 1rem;
+        position: relative;
+        padding-bottom: 0.4rem;
+        transition: color 0.3s ease;
 
-            &:link, &:visited{ 
-                color: var(--color-blanco);
-            }
+        &:link,
+        &:visited {
+            color: var(--color-blanco);
+        }
 
-           &::after {
+        &::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -69,19 +72,11 @@ header #nav-principal {
             transform: scaleX(0);
             transform-origin: bottom;
             transition: transform 0.3s ease;
-            }
-
-            &:hover, &:focus, &:active {
-                color: var(--color-secundario);
-
-                &::after {
-                    transform: scaleX(1);
-                    transform-origin: bottom;
-                }
-            }
         }
 
-        &:not(:has(a:hover, a:focus, a:active)) a.link-activo {
+        &:hover,
+        &:focus,
+        &:active {
             color: var(--color-secundario);
 
             &::after {
@@ -90,13 +85,26 @@ header #nav-principal {
             }
         }
     }
-header #logo-sitio{
+
+    &:not(:has(a:hover, a:focus, a:active)) a.link-activo {
+        color: var(--color-secundario);
+
+        &::after {
+            transform: scaleX(1);
+            transform-origin: bottom;
+        }
+    }
+}
+
+header #logo-sitio {
     margin: 0;
 }
-header #logo-sitio a{
+
+header #logo-sitio a {
     display: block;
 }
-header #logo-sitio img{
+
+header #logo-sitio img {
     width: 100px;
     height: 100px;
     object-fit: contain;
@@ -107,7 +115,7 @@ header #logo-sitio img{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-header #logo-sitio img:hover{
+header #logo-sitio img:hover {
     transform: rotate(0deg) scale(1.05);
 }
 
@@ -236,14 +244,16 @@ footer #nav-sitio a:focus::after {
     margin: 0 0 1rem;
 }
 
-#contenedor-destacadas{
+#contenedor-destacadas {
     width: 100%;
     padding: 5rem 0 3.5rem;
 }
-#recetas-destacadas{
+
+#recetas-destacadas {
     width: 100%;
     text-align: center;
 }
+
 #recetas-destacadas h2 {
     font-family: var(--fuente-texto);
     color: var(--color-texto);
@@ -251,7 +261,7 @@ footer #nav-sitio a:focus::after {
     margin-bottom: 2rem;
 }
 
-#carrusel-destacadas{
+#carrusel-destacadas {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -259,20 +269,21 @@ footer #nav-sitio a:focus::after {
     width: 100%;
 }
 
-#ventana-destacadas{
+#ventana-destacadas {
     width: 53%;
     overflow: hidden;
 }
 
-#lista-destacadas{
+#lista-destacadas {
     width: 100%;
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
     transition: transform 0.4s ease;
 }
-.tarjeta-receta{
- flex: 0 0 100%;
+
+.tarjeta-receta {
+    flex: 0 0 100%;
     background-color: var(--color-blanco);
     border-radius: 30px;
     overflow: hidden;
@@ -289,14 +300,15 @@ footer #nav-sitio a:focus::after {
     object-fit: cover;
     display: block;
 }
-.tarjeta-receta h3{
+
+.tarjeta-receta h3 {
     font-family: var(--fuente-texto);
     font-size: 1.6rem;
     margin: 1.2rem 1.5rem 0.5rem;
     color: var(--color-texto);
 }
 
-.tarjeta-receta p{
+.tarjeta-receta p {
     margin: 0 1.5rem 1.2rem;
     line-height: 1.5;
 }
@@ -315,7 +327,7 @@ footer #nav-sitio a:focus::after {
     margin-top: auto;
 }
 
-.boton-ver-receta:hover{
+.boton-ver-receta:hover {
     background-color: var(--color-principal);
     transform: translateY(-2px);
 }
@@ -347,14 +359,14 @@ footer #nav-sitio a:focus::after {
 }
 
 
-#buscador{
-display: flex;
-justify-content: center;
-gap: 1rem;
-align-items: center;
+#buscador {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
 }
 
-#input-buscar-recetas{
+#input-buscar-recetas {
     width: 50%;
     padding: 0.6rem 0.4rem;
     border: 1px solid var(--color-borde);
@@ -369,12 +381,13 @@ align-items: center;
     border-color: var(--color-secundario);
 }
 
-#input-buscar-recetas::placeholder{
+#input-buscar-recetas::placeholder {
     font-style: italic;
 }
-#boton-buscar{
+
+#boton-buscar {
     background-color: var(--color-header);
-    
+
     color: var(--color-blanco);
     border: 1px solid var(--color-blanco);
     padding: 0.6rem 1.2rem;
@@ -383,10 +396,10 @@ align-items: center;
     font-family: var(--fuente-texto);
 }
 
-#boton-buscar:hover{
-background-color: var(--color-principal);
-transform: translateY(-2px);
-transition: all 0.5s ease;
+#boton-buscar:hover {
+    background-color: var(--color-principal);
+    transform: translateY(-2px);
+    transition: all 0.5s ease;
 
 }
 
@@ -395,10 +408,10 @@ transition: all 0.5s ease;
     padding: 2rem 3rem 2rem 0;
 }
 
-#grilla-recetas{
-    
+#grilla-recetas {
+
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     width: 100%;
     max-width: 1200px;
@@ -435,7 +448,8 @@ transition: all 0.5s ease;
     text-align: center;
 }
 
-#filtros h3, #filtros .titulo-filtro {
+#filtros h3,
+#filtros .titulo-filtro {
     margin: 0 0 0.8rem;
     font-size: 1rem;
     font-weight: 600;
@@ -457,13 +471,13 @@ transition: all 0.5s ease;
     cursor: pointer;
 }
 
-#filtros label input[type="checkbox"]{
+#filtros label input[type="checkbox"] {
     margin-right: 0.5rem;
     accent-color: var(--color-header);
 }
 
-#select-tiempo, 
-#select-categoria, 
+#select-tiempo,
+#select-categoria,
 #select-tipo-plato {
     display: block;
     width: 90%;
@@ -476,11 +490,11 @@ transition: all 0.5s ease;
     font-size: 0.9rem;
     cursor: pointer;
     margin: 0 auto;
-    
+
 }
 
 #select-tiempo:focus,
-#select-categoria:focus, 
+#select-categoria:focus,
 #select-tipo-plato:focus {
     outline: none;
     border-color: var(--color-secundario);
@@ -494,7 +508,8 @@ transition: all 0.5s ease;
     margin-top: 1rem;
 }
 
-#boton-aplicar-filtros,#boton-limpiar-filtros{
+#boton-aplicar-filtros,
+#boton-limpiar-filtros {
     width: 100%;
     padding: 0.7rem 1rem;
     border: none;
@@ -503,18 +518,20 @@ transition: all 0.5s ease;
     font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    
+
 }
 
-#boton-aplicar-filtros{
+#boton-aplicar-filtros {
     background-color: var(--color-header);
     color: var(--color-blanco);
 }
-#boton-aplicar-filtros:hover,#boton-limpiar-filtros:hover {
+
+#boton-aplicar-filtros:hover,
+#boton-limpiar-filtros:hover {
     transform: translateY(-2px);
 }
 
-#boton-limpiar-filtros{
+#boton-limpiar-filtros {
     background-color: rgba(194, 0, 0, 0.922);
     color: var(--color-blanco);
 }
@@ -538,7 +555,7 @@ transition: all 0.5s ease;
     font-weight: 500;
     color: var(--color-texto);
 }
-    
+
 .redes-sociales-items {
     display: flex;
     flex-direction: row;
@@ -547,7 +564,7 @@ transition: all 0.5s ease;
     gap: 4rem;
     flex-wrap: wrap;
 }
-    
+
 .redes-sociales-items article {
     display: flex;
     align-items: center;
@@ -561,7 +578,7 @@ transition: all 0.5s ease;
 }
 
 /* SECCION FORMULARIO DE CONTACTO */
-.contenedor-texto{
+.contenedor-texto {
     text-align: center;
     font-size: 1.2rem;
     font-weight: 500;
@@ -604,7 +621,7 @@ transition: all 0.5s ease;
 }
 
 .contenedor-form #mensaje {
-        padding-bottom: 3rem;
+    padding-bottom: 3rem;
 }
 
 /* BOTON ENVIAR */
@@ -642,7 +659,7 @@ transition: all 0.5s ease;
     flex: 0 0 40%;
     max-width: 32rem;
     margin: 1rem 0 0 1rem;
-        
+
     img {
         width: 100%;
         height: auto;
@@ -662,14 +679,14 @@ transition: all 0.5s ease;
 
 .etiqueta-plato {
     display: inline-block;
-    padding: 0.25rem 0.75rem; 
-    background-color: var(--color-principal); 
-    color: var(--color-blanco); 
+    padding: 0.25rem 0.75rem;
+    background-color: var(--color-principal);
+    color: var(--color-blanco);
     font-size: 0.8rem;
     font-weight: 500;
-    border-radius: 20px; 
-    text-transform: capitalize; 
-    width: fit-content; 
+    border-radius: 20px;
+    text-transform: capitalize;
+    width: fit-content;
 }
 
 .etiqueta-plato h3 {
@@ -700,7 +717,7 @@ transition: all 0.5s ease;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 3rem; 
+    gap: 3rem;
 }
 
 .datos-adicionales .dato {
@@ -729,18 +746,18 @@ transition: all 0.5s ease;
     display: flex;
     flex-direction: row;
     gap: 3rem;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 #receta .columna-izquierda {
-    flex: 0 0 35%; 
+    flex: 0 0 35%;
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
 #receta .columna-derecha {
-    flex: 1; 
+    flex: 1;
 }
 
 /* CALCULADORA PORCIONES */
@@ -751,7 +768,7 @@ transition: all 0.5s ease;
     border-radius: 12px;
     padding: 1.5rem;
     max-width: 20em;
-    margin: 0 0 1.5rem 1.5rem; 
+    margin: 0 0 1.5rem 1.5rem;
 }
 
 .calculadora-porciones h5 {
@@ -797,10 +814,10 @@ transition: all 0.5s ease;
 /* LISTA DE INGREDIENTES */
 /* parte izquierda */
 .lista-ingredientes {
-    margin: 0 0 0 1.5rem;   
+    margin: 0 0 0 1.5rem;
 }
 
-.lista-ingredientes h5{
+.lista-ingredientes h5 {
     margin-top: 0;
     margin-bottom: 1rem;
     font-family: var(--fuente-titulos);
@@ -834,7 +851,7 @@ transition: all 0.5s ease;
 /* LISTA DE PASOS */
 /* parte derecha */
 .lista-pasos {
-    list-style: none; 
+    list-style: none;
     counter-reset: paso-counter;
     padding: 0;
     margin-top: 1.5rem;
@@ -844,21 +861,24 @@ transition: all 0.5s ease;
 }
 
 .lista-pasos li {
-    counter-increment: paso-counter; /* contador de pasos */
+    counter-increment: paso-counter;
+    /* contador de pasos */
     display: flex;
     align-items: flex-start;
     position: relative;
-    padding-left: 3.5rem; 
+    padding-left: 3.5rem;
     line-height: 1.5;
     font-size: 1rem;
 
     /*numero de paso*/
     &::before {
-        content: counter(paso-counter);/* incrementar el contador */
+        content: counter(paso-counter);
+        /* incrementar el contador */
         position: absolute;
         left: 0;
         top: 0;
-        transform: translateY(-15%); /* ajustar la posición del número */
+        transform: translateY(-15%);
+        /* ajustar la posición del número */
         font-family: var(--fuente-titulos);
         font-size: 1.5rem;
         font-weight: 700;
@@ -866,7 +886,7 @@ transition: all 0.5s ease;
         width: 1.5rem;
         text-align: center;
     }
-    
+
     /*separador horizontal*/
     &::after {
         content: "";
@@ -879,7 +899,8 @@ transition: all 0.5s ease;
     }
 }
 
-.separador{/*para que los hr no ocupen todo el ancho*/
+.separador {
+    /*para que los hr no ocupen todo el ancho*/
     width: 98%;
     height: 1px;
     background-color: var(--color-borde);
@@ -889,7 +910,8 @@ transition: all 0.5s ease;
 
 /*SECCION OTRAS RECETAS*/
 /* texto superior */
-.texto-superior {/* alinearlos horizontalmente */
+.texto-superior {
+    /* alinearlos horizontalmente */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -904,7 +926,8 @@ transition: all 0.5s ease;
     color: var(--color-texto);
 }
 
-.texto-superior a {/* referencia a recetas */
+.texto-superior a {
+    /* referencia a recetas */
     margin: 0 1.5rem 0 0;
     color: var(--color-secundario);
     text-decoration: none;
@@ -918,47 +941,52 @@ transition: all 0.5s ease;
 }
 
 /* mas recetas */
-.otras-recetas{
+.otras-recetas {
     width: 100%;
     max-width: 70em;
     margin: 3rem auto 0 auto;
     padding: 0 1rem;
 }
 
-.otras-recetas .grid-recetas {/*hacer un grid para previzualizar 3 recetas*/
+.otras-recetas .grid-recetas {
+    /*hacer un grid para previzualizar 3 recetas*/
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-areas: "receta-1 receta-2 receta-3";
     gap: 1.5rem;
 }
 
-.otras-recetas .grid-recetas .receta-corta{/*para cada receta*/
+.otras-recetas .grid-recetas .receta-corta {
+    /*para cada receta*/
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.otras-recetas .grid-recetas .receta-corta .contenedor-imagen{/*imagen de la receta*/
+.otras-recetas .grid-recetas .receta-corta .contenedor-imagen {
+    /*imagen de la receta*/
     width: 100%;
     aspect-ratio: 4/3;
     overflow: hidden;
     border-radius: 10px;
 
-    img{
+    img {
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
 }
 
-.otras-recetas .grid-recetas .receta-corta h3 {/*titulo de la receta*/
+.otras-recetas .grid-recetas .receta-corta h3 {
+    /*titulo de la receta*/
     margin: 0;
     font-family: var(--fuente-titulos);
     font-size: 1rem;
     color: var(--color-texto);
 }
 
-.otras-recetas .grid-recetas .receta-corta p {/*minutos que tarda*/
+.otras-recetas .grid-recetas .receta-corta p {
+    /*minutos que tarda*/
     margin: 0;
     font-size: 0.8rem;
     color: var(--color-secundario);
@@ -966,7 +994,7 @@ transition: all 0.5s ease;
 }
 
 
-.cantidad-ingrediente{
+.cantidad-ingrediente {
     display: inline;
     color: var(--color-principal);
     font-size: 0.8rem;
@@ -974,7 +1002,7 @@ transition: all 0.5s ease;
 }
 
 /* INSERCION DINAMICA */
-.nombre-ingrediente{
+.nombre-ingrediente {
     display: inline;
     font-size: 0.8rem;
     font-weight: 500;

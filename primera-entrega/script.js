@@ -106,7 +106,7 @@ const recetas = [
         nombre: "Torta de chocolate",
         descripcion: "Bizcochuelo húmedo con relleno y cobertura de chocolate.",
         categoria: "Postres",
-        
+
         teoria: "sandwich",
         destacada: false,
         ingredientes: [
@@ -136,7 +136,7 @@ const recetas = [
         nombre: "Chipa",
         descripcion: "Pancitos de queso y almidón de mandioca, típicos del litoral.",
         categoria: "Panadería",
-        
+
         teoria: "sandwich",
         destacada: false,
         ingredientes: [
@@ -165,7 +165,7 @@ const recetas = [
         nombre: "Pollo al horno con papas",
         descripcion: "Dorado y jugoso, con papas al horno como acompañamiento.",
         categoria: "Platos principales",
-        
+
         teoria: "ensalada",
         destacada: false,
 
@@ -195,7 +195,7 @@ const recetas = [
         nombre: "Bife de chorizo a la parrilla",
         descripcion: "Un corte clásico, a punto, con su costrita por fuera.",
         categoria: "Parrilla",
-        
+
         teoria: "ensalada",
         destacada: false,
 
@@ -221,7 +221,7 @@ const recetas = [
         nombre: "Provoleta",
         descripcion: "Queso derretido a la parrilla, con orégano y aceite de oliva.",
         categoria: "Entradas",
-       
+
         teoria: "sopa",
         destacada: false,
 
@@ -247,7 +247,7 @@ const recetas = [
         nombre: "Empanadas de carne",
         descripcion: "Repulgo casero, jugosas por dentro y doradas por fuera.",
         categoria: "Empanadas",
-        
+
         teoria: "sandwich",
         destacada: false,
 
@@ -277,7 +277,7 @@ const recetas = [
         nombre: "Locro",
         descripcion: "Maíz, zapallo y carne, cocidos a fuego lento por horas.",
         categoria: "Platos tradicionales",
-        
+
         teoria: "sopa",
         destacada: false,
 
@@ -308,7 +308,7 @@ const recetas = [
         nombre: "Milanesas con puré",
         descripcion: "El combo de toda la vida, crocante y cremoso.",
         categoria: "Platos principales",
-       
+
         teoria: "ensalada",
         destacada: false,
 
@@ -337,20 +337,20 @@ const recetas = [
  * Mostrar la receta en la pagina calcular-receta
  * @method mostrarReceta
  */
- const mostrarReceta = () => {
+const mostrarReceta = () => {
     let contenidoPasos = "";
-    
+
     const queryString = window.location.search;
 
-    
+
     const urlParams = new URLSearchParams(queryString);
 
-   
+
     const idReceta = urlParams.get('receta');
 
     let infoReceta = recetas.find(receta => receta.id === idReceta);
 
-    if(infoReceta == null){
+    if (infoReceta == null) {
         document.getElementById('img-receta').innerHTML = `<img src="imagenes/pregunta.png" alt="signo de pregunta" id="imagen-pregunta">`;
 
         document.getElementById('categoria-receta').innerText = "Sin categoria";
@@ -360,7 +360,7 @@ const recetas = [
         document.getElementById('descripcion-receta').innerText = "Sin descripción";
 
         document.getElementById('tiempo').innerText = "No hay minutos";
-    }else{
+    } else {
         document.getElementById('img-receta').innerHTML = `<img src="${infoReceta.imagen}" alt="${infoReceta.nombre}" id="imagen-${infoReceta.id}">`;
 
         document.getElementById('categoria-receta').innerText = infoReceta.categoria;
@@ -372,14 +372,14 @@ const recetas = [
         document.getElementById('tiempo').innerText = `${infoReceta.minutos} minutos`;
 
         mostrarIngredientes(infoReceta.ingredientes);
-        
+
         infoReceta.pasos.forEach((paso, num) => {
-        contenidoPasos += `
+            contenidoPasos += `
         <li aria-label="paso ${num + 1} ${paso}">
             ${paso}
         </li>
     `;
-});
+        });
 
         document.getElementById('pasos').innerHTML = contenidoPasos;
     }
@@ -398,7 +398,7 @@ const verReceta = (idReceta) => {
  * Mostrar la cantidad de porciones que se estan calculando
  * @method cantidadPorciones
  */
-const cantidadPorciones = () =>{
+const cantidadPorciones = () => {
     document.getElementById('cantidad').innerText = document.getElementById('input-porciones').value;
 }
 
@@ -412,13 +412,13 @@ const mostrarIngredientes = (listIngredientes) => {
     let cantidad = document.getElementById('input-porciones').value;
     listIngredientes.forEach((ingr, num) => {
         let total = Math.round(cantidad * parseFloat(listIngredientes[num].cantidad) * 100) / 100;
-        
-        if(isNaN(total)){
+
+        if (isNaN(total)) {
             total = "a gusto"
         };
 
-        contenido += 
-         `
+        contenido +=
+            `
                 <li aria-label="ingrediente ${listIngredientes[num].nombre}">
                     <label for="ingrediente-${num}">
                     <input type="checkbox" id="ingrediente-${num}">
@@ -426,7 +426,7 @@ const mostrarIngredientes = (listIngredientes) => {
                     <span class="nombre-ingrediente"> ${listIngredientes[num].nombre}</span>
                     </label>
                 </li>`
-        });
+    });
 
     document.getElementById('ingredientes').innerHTML = contenido;
 }
@@ -440,14 +440,14 @@ const recetasCortas = () => {
     const numerosUnicos = new Set();
 
     while (numerosUnicos.size < 3) {
-        
+
         const numero = Math.floor(Math.random() * recetas.length);
         numerosUnicos.add(numero);
     }
 
     const arrayTemp = Array.from(numerosUnicos);
 
-    const [num1,num2,num3] = arrayTemp;
+    const [num1, num2, num3] = arrayTemp;
 
     let listaRecetas = [recetas.at(num1), recetas.at(num2), recetas.at(num3)];
 
@@ -491,33 +491,33 @@ const aplicarFiltros = () => {
     let cebolla = document.getElementById('check-ing-cebolla').checked;
     let harina = document.getElementById('check-ing-harina').checked;
 
-    if(categoria !== "todas"){
+    if (categoria !== "todas") {
         newRecetas = newRecetas.filter(receta => receta.tipoPlato.toLowerCase() === categoria.toLowerCase());
     }
 
-    if(tiempo !== "todos"){
-    newRecetas = newRecetas.filter((receta) => {
-        switch(tiempo){
-            case "rapido":
-                return receta.minutos <= 30;
+    if (tiempo !== "todos") {
+        newRecetas = newRecetas.filter((receta) => {
+            switch (tiempo) {
+                case "rapido":
+                    return receta.minutos <= 30;
 
-            case "medio":
-                return receta.minutos > 30 && receta.minutos <= 60;
+                case "medio":
+                    return receta.minutos > 30 && receta.minutos <= 60;
 
-            case "largo":
-                return receta.minutos > 60;
+                case "largo":
+                    return receta.minutos > 60;
 
-            default:
-                return true;
-        }
-    });
-}
-    if(teoria !== "todas"){
-    newRecetas = newRecetas.filter(
-        receta => receta.teoria.toLowerCase() === teoria.toLowerCase()
-    );
-}
-    
+                default:
+                    return true;
+            }
+        });
+    }
+    if (teoria !== "todas") {
+        newRecetas = newRecetas.filter(
+            receta => receta.teoria.toLowerCase() === teoria.toLowerCase()
+        );
+    }
+
     let ingredientesArray = [];
     papa ? ingredientesArray.push("papa") : "";
     tomate ? ingredientesArray.push("tomate") : "";
@@ -528,14 +528,14 @@ const aplicarFiltros = () => {
     cebolla ? ingredientesArray.push("cebolla") : "";
     harina ? ingredientesArray.push("harina") : "";
 
-    if(ingredientesArray.length > 0){
-    newRecetas = newRecetas.filter((receta) => {
-        return receta.ingredientes.some((ingrediente) => {
-            return ingredientesArray.includes(ingrediente.tipoIngrediente.toLowerCase());
+    if (ingredientesArray.length > 0) {
+        newRecetas = newRecetas.filter((receta) => {
+            return receta.ingredientes.some((ingrediente) => {
+                return ingredientesArray.includes(ingrediente.tipoIngrediente.toLowerCase());
+            });
         });
-    });
-}
-mostrarRecetas(newRecetas, "grilla-recetas");
+    }
+    mostrarRecetas(newRecetas, "grilla-recetas");
 }
 
 
@@ -547,12 +547,12 @@ let posicionCarrusel = 0;
  * @param {Array} lista - Lista de recetas que se desea mostrar
  * @param {string} idContenedor - Id del contenedor donde se mostrarán las recetas
  */
-const mostrarRecetas = (lista,idContenedor) => {
-const contenedor = document.getElementById(idContenedor);
-contenedor.innerHTML = "";
-for(let i = 0; i < lista.length; i++){
-    const receta = lista[i];
-    contenedor.innerHTML += `<article class="tarjeta-receta">
+const mostrarRecetas = (lista, idContenedor) => {
+    const contenedor = document.getElementById(idContenedor);
+    contenedor.innerHTML = "";
+    for (let i = 0; i < lista.length; i++) {
+        const receta = lista[i];
+        contenedor.innerHTML += `<article class="tarjeta-receta">
 
                 <img src="${receta.imagen}" alt="${receta.nombre}">
 
@@ -570,7 +570,7 @@ for(let i = 0; i < lista.length; i++){
                 </button>
 
             </article>`;
-}
+    }
 };
 /**
  * Carga las recetas en el catalogo
@@ -594,7 +594,7 @@ const cargarRecetas = () => {
         mostrarRecetas(nuevaLista, "grilla-recetas");
     }
 };
-cargarRecetas(); 
+cargarRecetas();
 
 /**
  * Carga las recetas destacadas en el carrusel
@@ -608,8 +608,8 @@ const CargarDestacadas = () => {
         const recetasdestacadas = recetas.filter(
             receta => receta.destacada === true
         );
-        mostrarRecetas(recetasdestacadas,"lista-destacadas");
-}
+        mostrarRecetas(recetasdestacadas, "lista-destacadas");
+    }
 };
 CargarDestacadas();
 
@@ -625,17 +625,17 @@ const moverCarrusel = direccion => {
     const desplazamiento = ventana.offsetWidth + espacio;
     const cantidadRecetas = 3;
 
-    if (direccion === "derecha"){
+    if (direccion === "derecha") {
         posicionCarrusel++;
-        if(posicionCarrusel >= cantidadRecetas){
-        posicionCarrusel = 0;
+        if (posicionCarrusel >= cantidadRecetas) {
+            posicionCarrusel = 0;
+        }
     }
-    }
-    if (direccion === "izquierda"){
+    if (direccion === "izquierda") {
         posicionCarrusel--;
 
-        if(posicionCarrusel < 0 ){
-            posicionCarrusel = cantidadRecetas -1;
+        if (posicionCarrusel < 0) {
+            posicionCarrusel = cantidadRecetas - 1;
         }
     }
     lista.style.transform = `translateX(-${posicionCarrusel * desplazamiento}px)`;
@@ -651,9 +651,9 @@ const moverCarrusel = direccion => {
 const filtrarReceta = () => {
     let searchWord = document.getElementById("input-buscar-recetas").value;
 
-    if(searchWord !== ""){
+    if (searchWord !== "") {
         localStorage.setItem("searchWord", searchWord);
-    }else{
+    } else {
         localStorage.removeItem("searchWord");
     }
 
@@ -698,7 +698,7 @@ const validarPorciones = () => {
     const input = document.getElementById('input-porciones');
     const valor = parseFloat(input.value);
 
-    if(isNaN(valor) || valor <=0){
+    if (isNaN(valor) || valor <= 0) {
         alert("Ingresá una cantidad de porciones válida (un número mayor a cero).");
         input.value = "";
         return false;
