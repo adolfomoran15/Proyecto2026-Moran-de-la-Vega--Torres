@@ -339,13 +339,13 @@ const recetas = [
  */
 mostrarReceta = () => {
     let contenidoPasos = "";
-    // 1. Obtener toda la cadena de parámetros de la URL actual
+    
     const queryString = window.location.search;
 
-    // 2. Crear una instancia de URLSearchParams para manipularlo fácilmente
+    
     const urlParams = new URLSearchParams(queryString);
 
-    // 3. Obtener el valor asociándolo a la clave del parámetro
+   
     const idReceta = urlParams.get('receta');
 
     let infoReceta = recetas.find(receta => receta.id === idReceta);
@@ -418,15 +418,14 @@ mostrarIngredientes = (listIngredientes) => {
         };
 
         contenido += 
-                            `
-                            <li aria-label="ingrediente ${listIngredientes[num].nombre}">
-                                <label>
-                                    <input type="checkbox" id="ingrediente-${num}">
-                                    <span class="cantidad-ingrediente">${total} ${listIngredientes[num].unidad}</span>
-                                    <span class="nombre-ingrediente"> ${listIngredientes[num].nombre}</span>
-                                </label>
-                            </li>
-                            `
+         `
+                <li aria-label="ingrediente ${listIngredientes[num].nombre}">
+                    <label for="ingrediente-${num}">
+                    <input type="checkbox" id="ingrediente-${num}">
+                    <span class="cantidad-ingrediente">${total} ${listIngredientes[num].unidad}</span>
+                    <span class="nombre-ingrediente"> ${listIngredientes[num].nombre}</span>
+                    </label>
+                </li>`
         });
 
     document.getElementById('ingredientes').innerHTML = contenido;
