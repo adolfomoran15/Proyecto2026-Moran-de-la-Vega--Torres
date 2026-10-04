@@ -208,7 +208,7 @@ const recetas = [
         imagen: "imagenes/Bife-Chorizo.jpg",
         pasos: [
             "Preparar la parrilla con brasas al rojo vivo y asegurar una temperatura media-alta (soportar 4-5 segundos la mano sobre el fierro).",
-            "Salalar el bife de ambos lados justo antes de llevarlo a la parrilla.",
+            "Salar el bife de ambos lados justo antes de llevarlo a la parrilla.",
             "Cocinar durante 12 a 15 minutos sin moverlo hasta que empiecen a asomar gotitas de jugo en la superficie.",
             "Dar vuelta con pinza (sin pinchar) y cocinar por 8 a 10 minutos más para lograr un punto medio.",
             "Dejar reposar 2 minutos sobre una tabla antes de cortar para que se redistribuyan los jugos."
@@ -263,7 +263,7 @@ const recetas = [
         imagen: "imagenes/Empanadas.jpg",
         pasos: [
             "Picar la cebolla fina y rehogarla en una sartén con grasa o aceite hasta que transparente.",
-            "Agregar la carne picada, salpimentar y condentar con comino y pimentón dulce. Cocinar solo hasta que pierda el color rojo.",
+            "Agregar la carne picada, salpimentar y condimentar con comino y pimentón dulce. Cocinar solo hasta que pierda el color rojo.",
             "Retirar del fuego y dejar enfriar completamente el relleno en la heladera.",
             "Mezclar con el huevo duro y las aceitunas picadas.",
             "Repartir el relleno en las 2 tapas, humedecer los bordes, cerrar bien y hacer el repulgo.",
@@ -324,7 +324,7 @@ const recetas = [
         imagen: "imagenes/Milanesas-Pure.png",
         pasos: [
             "Pelar las papas, cortarlas en trozos parejos y ponerlas a hervir en abundante agua con sal hasta que estén bien tiernas.",
-            "Pasar la carne por el huevo batido condientado con provenzal y luego empanar presionando con firmeza.",
+            "Pasar la carne por el huevo batido condimentado con provenzal y luego empanar presionando con firmeza.",
             "Freír la milanesa en abundante aceite caliente (o hornear a fuego fuerte) hasta que esté dorada de ambos lados.",
             "Colar las papas calientes, pisarlas inmediatamente e incorporar la manteca y la leche tibia hasta lograr un puré cremoso.",
             "Servir la milanesa crocante acompañada por la porción de puré salpimentado a gusto."
@@ -375,7 +375,7 @@ const recetas = [
         
         infoReceta.pasos.forEach((paso, num) => {
         contenidoPasos += `
-        <li aria-label="paso ${num} ${paso}">
+        <li aria-label="paso ${num + 1} ${paso}">
             ${paso}
         </li>
     `;

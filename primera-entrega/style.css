@@ -965,8 +965,8 @@ transition: all 0.5s ease;
     font-weight: 600;
 }
 
-/* INSERCION DINAMICA */
-#cantidad-ingrediente{
+
+.cantidad-ingrediente{
     display: inline;
     color: var(--color-principal);
     font-size: 0.8rem;
@@ -974,7 +974,7 @@ transition: all 0.5s ease;
 }
 
 /* INSERCION DINAMICA */
-#nombre-ingrediente{
+.nombre-ingrediente{
     display: inline;
     font-size: 0.8rem;
     font-weight: 500;
