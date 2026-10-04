@@ -398,7 +398,7 @@ const verReceta = (idReceta) => {
  * Mostrar la cantidad de porciones que se estan calculando
  * @method cantidadPorciones
  */
-const cantidadPorciones = () =>{
+const cantidadPorciones = () => {
     document.getElementById('cantidad').innerText = document.getElementById('input-porciones').value;
 }
 
@@ -495,9 +495,9 @@ const aplicarFiltros = () => {
         newRecetas = newRecetas.filter(receta => receta.tipoPlato.toLowerCase() === categoria.toLowerCase());
     }
 
-    if(tiempo !== "todos"){
+    if (tiempo !== "todos") {
         newRecetas = newRecetas.filter((receta) => {
-            switch(tiempo){
+            switch (tiempo) {
                 case "rapido":
                     return receta.minutos <= 30;
 
@@ -512,12 +512,12 @@ const aplicarFiltros = () => {
             }
         });
     }
-    if(teoria !== "todas"){
+    if (teoria !== "todas") {
         newRecetas = newRecetas.filter(
             receta => receta.teoria.toLowerCase() === teoria.toLowerCase()
         );
     }
-    
+
     let ingredientesArray = [];
     papa ? ingredientesArray.push("papa") : "";
     tomate ? ingredientesArray.push("tomate") : "";
@@ -528,7 +528,7 @@ const aplicarFiltros = () => {
     cebolla ? ingredientesArray.push("cebolla") : "";
     harina ? ingredientesArray.push("harina") : "";
 
-    if(ingredientesArray.length > 0){
+    if (ingredientesArray.length > 0) {
         newRecetas = newRecetas.filter((receta) => {
             return receta.ingredientes.some((ingrediente) => {
                 return ingredientesArray.includes(ingrediente.tipoIngrediente.toLowerCase());
@@ -547,12 +547,12 @@ let posicionCarrusel = 0;
  * @param {Array} lista - Lista de recetas que se desea mostrar
  * @param {string} idContenedor - Id del contenedor donde se mostrarán las recetas
  */
-const mostrarRecetas = (lista,idContenedor) => {
+const mostrarRecetas = (lista, idContenedor) => {
     const contenedor = document.getElementById(idContenedor);
     contenedor.innerHTML = "";
-    for(let i = 0; i < lista.length; i++){
+    for (let i = 0; i < lista.length; i++) {
         const receta = lista[i];
-        contenedor.innerHTML += 
+        contenedor.innerHTML +=
             `<article class="tarjeta-receta">
 
             <img src="${receta.imagen}" alt="${receta.nombre}">
@@ -595,7 +595,7 @@ const cargarRecetas = () => {
 
         mostrarRecetas(nuevaLista, "grilla-recetas");
     }
-}; 
+};
 
 /**
  * Carga las recetas destacadas en el carrusel
@@ -686,40 +686,53 @@ const volverRecetas = () => {
     window.location.href = "recetas.html";
 };
 
+
 /**
- * Envía formulario de la pestaña de contacto
- * @method enviarFormularioContacto
+ * Valida que la cantidad de porciones ingresada sea un número válido y mayor a cero.
+ * Si no lo es, avisa al usuario con un alert y vacía el campo.
+ * @method validarPorciones
+ * @return {boolean} true si el valor es válido, false si no lo es
  */
-const enviarFormularioContacto = () => {
-    const inputNombre = document.getElementById("input-nombre");
-    const inputCorreo = document.getElementById("input-email");
-    const inputMensaje = document.getElementById("input-mensaje");
-    
-    const nombre = inputNombre?.value?.trim() || "";
-    const correo = inputCorreo?.value?.trim() || "";
-    const mensaje = inputMensaje?.value?.trim() || "";
+const validarPorciones = () => {
+    const input = document.getElementById('input-porciones');
+    const valor = parseFloat(input.value);
 
-    if (nombre === "") {
-        alert("Por favor, ingrese su nombre.");
-        inputNombre?.focus();
+    if (isNaN(valor) || valor <= 0) {
+        alert("Ingresá una cantidad de porciones válida (un número mayor a cero).");
+        input.value = "";
+        return false;
+    }
+    return true;
+};
+
+
+
+/**
+ * Valida el formulario de contacto. Si un campo es inválido, avisa con un alert
+ * y vacía ese campo. Si todo está bien, confirma el envío y vacía el formulario.
+ * @method enviarContacto
+ */
+
+const enviarContacto = () => {
+    const nombre = document.getElementById('input-nombre');
+    const email = document.getElementById('input-email');
+    const mensaje = document.getElementById('input-mensaje');
+
+    if (nombre.value === "") {
+        alert("Ingresá tu nombre");
         return;
     }
-
-    if (correo === "") {
-        alert("Por favor, ingrese un correo electrónico válido.");
-        inputCorreo?.focus();
+    if (!email.value.includes("@") || !email.value.includes(".")) {
+        alert("Ingresá un email válido.");
+        email.value = "";
         return;
     }
-
-    if (mensaje === "") {
-        alert("Por favor, ingrese un mensaje.");
-        inputMensaje?.focus();
+    if (mensaje.value === "") {
+        alert("Escribí un mensaje.");
         return;
     }
-
-    alert("Mensaje enviado con éxito");
-
-    inputNombre.value = "";
-    inputCorreo.value = "";
-    inputMensaje.value = "";
+    alert("¡Gracias por escribirnos!");
+    nombre.value = "";
+    email.value = "";
+    mensaje.value = "";
 };
