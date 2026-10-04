@@ -42,15 +42,17 @@
         </div>
         <div class="contenedor-form">
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" size="30" maxlength="50" required>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" size="30" maxlength="50">
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" size="30" maxlength="50" required>
+            <input type="email" id="email" name="email" placeholder="tuemail@ejemplo.com" size="30" maxlength="50">
 
             <label for="mensaje">Mensaje:</label>
-            <input type="text" id="mensaje" name="mensaje" size="40" maxlength="500" required>
+            <input type="text" id="mensaje" name="mensaje" placeholder="Contanos qué te pareció" size="40"
+                maxlength="500">
 
-            <button id="enviar" aria-label="Boton de enviar formulario">Enviar</button>
+            <button type="button" id="enviar" aria-label="Boton de enviar formulario"
+                onclick="enviarContacto()">Enviar</button>
         </div>
 
         <hr class="separador">
@@ -97,6 +99,7 @@
 
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 
 </html>
