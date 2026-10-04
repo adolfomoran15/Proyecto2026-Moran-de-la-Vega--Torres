@@ -704,4 +704,34 @@ const validarPorciones = () => {
         return false;
     }
     return true;
-}
+};
+
+/**
+ * Valida el formulario de contacto. Si un campo es inválido, avisa con un alert
+ * y vacía ese campo. Si todo está bien, confirma el envío y vacía el formulario.
+ * @method enviarContacto
+ */
+
+const enviarContacto = () => {
+    const nombre = document.getElementById('nombre');
+    const email = document.getElementById('email');
+    const mensaje = document.getElementById('mensaje');
+
+    if (nombre.value === "") {
+        alert("Ingresá tu nombre");
+        return;
+    }
+    if (!email.value.includes("@") || !email.value.includes(".")) {
+        alert("Ingresá un email válido.");
+        email.value = "";
+        return;
+    }
+    if (mensaje.value === "") {
+        alert("Escribí un mensaje.");
+        return;
+    }
+    alert("¡Gracias por escribirnos!");
+    nombre.value = "";
+    email.value = "";
+    mensaje.value = "";
+};
