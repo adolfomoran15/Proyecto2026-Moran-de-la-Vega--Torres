@@ -335,9 +335,9 @@ const recetas = [
 
 /**
  * Mostrar la receta en la pagina calcular-receta
- * @method mostrarReceta
+ * @method mostrarRecetaIndividual
  */
-const mostrarReceta = () => {
+const mostrarRecetaIndividual = () => {
     let contenidoPasos = "";
 
     const queryString = window.location.search;
@@ -398,7 +398,7 @@ const verReceta = (idReceta) => {
  * Mostrar la cantidad de porciones que se estan calculando
  * @method cantidadPorciones
  */
-const cantidadPorciones = () => {
+const cantidadPorciones = () =>{
     document.getElementById('cantidad').innerText = document.getElementById('input-porciones').value;
 }
 
@@ -495,9 +495,9 @@ const aplicarFiltros = () => {
         newRecetas = newRecetas.filter(receta => receta.tipoPlato.toLowerCase() === categoria.toLowerCase());
     }
 
-    if (tiempo !== "todos") {
+    if(tiempo !== "todos"){
         newRecetas = newRecetas.filter((receta) => {
-            switch (tiempo) {
+            switch(tiempo){
                 case "rapido":
                     return receta.minutos <= 30;
 
@@ -508,16 +508,16 @@ const aplicarFiltros = () => {
                     return receta.minutos > 60;
 
                 default:
-                    return true;
+                    return false;
             }
         });
     }
-    if (teoria !== "todas") {
+    if(teoria !== "todas"){
         newRecetas = newRecetas.filter(
             receta => receta.teoria.toLowerCase() === teoria.toLowerCase()
         );
     }
-
+    
     let ingredientesArray = [];
     papa ? ingredientesArray.push("papa") : "";
     tomate ? ingredientesArray.push("tomate") : "";
@@ -528,7 +528,7 @@ const aplicarFiltros = () => {
     cebolla ? ingredientesArray.push("cebolla") : "";
     harina ? ingredientesArray.push("harina") : "";
 
-    if (ingredientesArray.length > 0) {
+    if(ingredientesArray.length > 0){
         newRecetas = newRecetas.filter((receta) => {
             return receta.ingredientes.some((ingrediente) => {
                 return ingredientesArray.includes(ingrediente.tipoIngrediente.toLowerCase());
@@ -547,31 +547,33 @@ let posicionCarrusel = 0;
  * @param {Array} lista - Lista de recetas que se desea mostrar
  * @param {string} idContenedor - Id del contenedor donde se mostrarán las recetas
  */
-const mostrarRecetas = (lista, idContenedor) => {
+const mostrarRecetas = (lista,idContenedor) => {
     const contenedor = document.getElementById(idContenedor);
     contenedor.innerHTML = "";
-    for (let i = 0; i < lista.length; i++) {
+    for(let i = 0; i < lista.length; i++){
         const receta = lista[i];
-        contenedor.innerHTML += `<article class="tarjeta-receta">
+        contenedor.innerHTML += 
+            `<article class="tarjeta-receta">
 
-                <img src="${receta.imagen}" alt="${receta.nombre}">
+            <img src="${receta.imagen}" alt="${receta.nombre}">
 
-                <h3>${receta.nombre}</h3>
+            <h3>${receta.nombre}</h3>
 
-                <p>${receta.descripcion}</p>
+            <p>${receta.descripcion}</p>
 
-                <button
-                    type="button"
-                    class="boton-ver-receta"
-                    onclick="verReceta('${receta.id}')">
+            <button
+                type="button"
+                class="boton-ver-receta"
+                onclick="verReceta('${receta.id}')">
 
-                    Ver receta
+                Ver receta
 
-                </button>
+            </button>
 
             </article>`;
     }
 };
+
 /**
  * Carga las recetas en el catalogo
  * @method cargarRecetas
@@ -593,8 +595,7 @@ const cargarRecetas = () => {
 
         mostrarRecetas(nuevaLista, "grilla-recetas");
     }
-};
-cargarRecetas();
+}; 
 
 /**
  * Carga las recetas destacadas en el carrusel
@@ -611,7 +612,6 @@ const CargarDestacadas = () => {
         mostrarRecetas(recetasdestacadas, "lista-destacadas");
     }
 };
-CargarDestacadas();
 
 /**
  * Mueve el carrusel de recetas destacadas
@@ -641,13 +641,10 @@ const moverCarrusel = direccion => {
     lista.style.transform = `translateX(-${posicionCarrusel * desplazamiento}px)`;
 };
 
-
-
 /**
  * filtra recetas por palabra
  * @method filtrarReceta
  */
-
 const filtrarReceta = () => {
     let searchWord = document.getElementById("input-buscar-recetas").value;
 
@@ -688,50 +685,41 @@ const limpiarFiltros = () => {
 const volverRecetas = () => {
     window.location.href = "recetas.html";
 };
-/**
- * Valida que la cantidad de porciones ingresada sea un número válido y mayor a cero.
- * Si no lo es, avisa al usuario con un alert y vacía el campo.
- * @method validarPorciones
- * @return {boolean} true si el valor es válido, false si no lo es
- */
-const validarPorciones = () => {
-    const input = document.getElementById('input-porciones');
-    const valor = parseFloat(input.value);
-
-    if (isNaN(valor) || valor <= 0) {
-        alert("Ingresá una cantidad de porciones válida (un número mayor a cero).");
-        input.value = "";
-        return false;
-    }
-    return true;
-};
 
 /**
- * Valida el formulario de contacto. Si un campo es inválido, avisa con un alert
- * y vacía ese campo. Si todo está bien, confirma el envío y vacía el formulario.
- * @method enviarContacto
+ * Envía formulario de la pestaña de contacto
+ * @method enviarFormularioContacto
  */
+const enviarFormularioContacto = () => {
+    const inputNombre = document.getElementById("input-nombre");
+    const inputCorreo = document.getElementById("input-email");
+    const inputMensaje = document.getElementById("input-mensaje");
+    
+    const nombre = inputNombre?.value?.trim() || "";
+    const correo = inputCorreo?.value?.trim() || "";
+    const mensaje = inputMensaje?.value?.trim() || "";
 
-const enviarContacto = () => {
-    const nombre = document.getElementById('nombre');
-    const email = document.getElementById('email');
-    const mensaje = document.getElementById('mensaje');
+    if (nombre === "") {
+        alert("Por favor, ingrese su nombre.");
+        inputNombre?.focus();
+        return;
+    }
 
-    if (nombre.value === "") {
-        alert("Ingresá tu nombre");
+    if (correo === "") {
+        alert("Por favor, ingrese un correo electrónico válido.");
+        inputCorreo?.focus();
         return;
     }
-    if (!email.value.includes("@") || !email.value.includes(".")) {
-        alert("Ingresá un email válido.");
-        email.value = "";
+
+    if (mensaje === "") {
+        alert("Por favor, ingrese un mensaje.");
+        inputMensaje?.focus();
         return;
     }
-    if (mensaje.value === "") {
-        alert("Escribí un mensaje.");
-        return;
-    }
-    alert("¡Gracias por escribirnos!");
-    nombre.value = "";
-    email.value = "";
-    mensaje.value = "";
+
+    alert("Mensaje enviado con éxito");
+
+    inputNombre.value = "";
+    inputCorreo.value = "";
+    inputMensaje.value = "";
 };
