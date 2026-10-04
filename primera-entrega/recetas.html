@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Adolfo Moran de la Vega, Franco Torres">
+    <meta name="description" content="Catalogo de recetas filtrable por categoria,ingredientes y tiempo de preparacion">
+    <meta name="keywords" content="recetas, cocina, sopa, sándwich, ensalada, filtro de recetas">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="icon" type="image/png" href="imagenes/favicon.png">
+
+    <title>Recetario web S.E.S</title>
+</head>
+
+<body>
+    <div id="contenedor-header">
+        <header id="header-principal">
+            <a href="lore.html" id="logo-sitio">
+                <img src="imagenes/logo_header.png" alt="Sándwich, Sopa o Ensalada">
+            </a>
+
+            <h1 id="titulo-sitio">Recetario web S.E.S</h1>
+
+            <nav id="nav-principal">
+                <a href="index.html" id="hlink-inicio">Inicio</a>
+                <a href="recetas.html" id="hlink-recetas" class="link-activo">Recetas</a>
+                <a href="contacto.html" id="hlink-contacto">Contacto</a>
+            </nav>
+        </header>
+    </div>
+    <main id="contenido-principal" class="pagina-recetas">
+        <div id="contenedor-filtros">
+            <section id="filtros">
+                <h2>Filtrar recetas</h2>
+                <div id="filtro-categoria">
+                    <label for="select-categoria" class="titulo-filtro">Categoría</label>
+                    <select id="select-categoria" name="categoria">
+                        <option value="todas">Todas las categorías</option>
+                        <option value="entrada">Entrada</option>
+                        <option value="principal">Plato principal</option>
+                        <option value="postre">Postre</option>
+                    </select>
+                </div>
+
+                <div id="filtro-ingrediente">
+                    <h3>Ingredientes</h3>
+                    <label>
+                        <input type="checkbox" id="check-ing-papa" name="ingrediente" value="papa">
+                        Papa
+                    </label>
+                    <label>
+                        <input type="checkbox" id="check-ing-tomate" name="ingrediente" value="tomate">
+                        Tomate
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="check-ing-queso" name="ingrediente" value="queso">
+                        Queso
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="check-ing-lechuga" name="ingrediente" value="lechuga">
+                        lechuga
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="check-ing-carne" name="ingrediente" value="carne">
+                        Carne
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="check-ing-huevo" name="ingrediente" value="huevo">
+                        Huevo
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="check-ing-cebolla" name="ingrediente" value="cebolla">
+                        Cebolla
+                    </label>
+
+                    <label>
+                        <input type="checkbox" id="check-ing-harina" name="ingrediente" value="harina">
+                        Harina
+                    </label>
+                </div>
+                <div id="filtro-teoria">
+                    <label for="select-tipo-plato" class="titulo-filtro">¿Sopa, sándwich o ensalada?</label>
+                    <select id="select-tipo-plato" name="categoria">
+                        <option value="todas">Todas las categorías</option>
+                        <option value="sopa">Sopa</option>
+                        <option value="sándwich">Sándwich</option>
+                        <option value="Ensalada">Ensalada</option>
+                    </select>
+                </div>
+                <div id="filtro-tiempo">
+                    <label for="select-tiempo" class="titulo-filtro">Tiempo de preparación</label>
+                    <select id="select-tiempo" name="tiempo">
+                        <option value="todos">Todos</option>
+                        <option value="rapido">Menos de 30 min</option>
+                        <option value="medio">Entre 30 y 60 min</option>
+                        <option value="largo">Más de 60 min</option>
+                    </select>
+                </div>
+            </section>
+
+            <div id="botones-filtros">
+                <button type="button" id="boton-aplicar-filtros" onclick="aplicarFiltros()">
+                    Aplicar filtros
+                </button>
+                <button type="button" id="boton-limpiar-filtros" onclick="limpiarFiltros()">
+                    Limpiar filtros
+                </button>
+            </div>
+        </div>
+
+        <div id="contenedor-catalogo">
+            <section id="catalogo-recetas">
+                <h2>Todas las recetas</h2>
+                <div id="grilla-recetas">
+                </div>
+            </section>
+        </div>
+    </main>
+    <div id="contenedor-footer">
+        <footer id="footer-principal">
+            <nav id="nav-texto">
+                <h6>S.E.S. cocina</h6>
+                <p id="frase-footer">La cocina no discute teorías, las prueba.</p>
+            </nav>
+
+            <nav id="nav-sitio">
+                <a href="index.html" id="flink-inicio">Inicio</a>
+                <a href="recetas.html" id="flink-recetas" class="link-activo">Recetas</a>
+                <a href="contacto.html" id="flink-contacto">Contacto</a>
+            </nav>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

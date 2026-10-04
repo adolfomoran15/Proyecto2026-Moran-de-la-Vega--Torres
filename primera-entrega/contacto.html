@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Adolfo Moran de la Vega, Franco Torres">
+    <meta name="description"
+        content="Contacto de la página">
+    <meta name="keywords" content="recetas, cocina, sopa, sandwich, ensalada">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link 
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" 
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Recetario web S.E.S</title>
+</head> <!-- link a CSS y Javascript  -->
+
+<body>
+    <div id="contenedor-header">
+        <header id="header-principal">
+            <a href="lore.html" id="logo-sitio">
+                <img src="imagenes/logo_header.png" alt="Sándwich, Sopa o Ensalada">
+            </a>
+            <h1 id="titulo-sitio">Recetario web S.E.S</h1>
+            <nav id="nav-principal">
+                <a href="index.html" id="hlink-inicio">Inicio</a>
+                <a href="recetas.html" id="hlink-recetas">Recetas</a>
+                <a href="contacto.html" id="hlink-contacto" class="link-activo">Contacto</a>
+            </nav>
+        </header>
+    </div>
+
+    <main id="contenido-principal" class="pagina-contacto">
+        <div class="contenedor-texto">
+            <h3>Contacto</h3>
+            <p>
+                ¿Tenés alguna sugerencia, consulta o simplemente querés contar
+                como salió la receta? Escribinos!
+            </p>
+        </div>
+        <div class="contenedor-form">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" maxlength="50" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" maxlength="50" required>
+
+            <label for="mensaje">Mensaje:</label>
+            <input type="text" id="mensaje" name="mensaje" maxlength="500" required>
+
+            <button id="enviar" aria-label="Boton de enviar formulario">Enviar</button>
+        </div>
+
+        <hr class="separador">
+
+        <div class="redes-sociales">
+            <p>¡También podés encontrarnos en nuestras redes sociales!</p>
+            <div class="redes-sociales-items">
+                <article class="instagram">
+                    <img src="imagenes/instagram-icon.png" alt="instagram" class="icono-red-social">
+                    <div class="contenedor-texto">
+                        <p>usuario_instagram</p>
+                    </div>
+                </article>
+                <article class="tiktok">
+                    <img src="imagenes/tiktok-icon.png" alt="tiktok" class="icono-red-social">
+                    <div class="contenedor-texto">
+                        <p>usuario_tiktok</p>
+                    </div>
+                </article>
+                <article class="facebook">
+                    <img src="imagenes/facebook-icon.png" alt="facebook" class="icono-red-social">
+                    <div class="contenedor-texto">
+                        <p>usuario_facebook</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <div id="contenedor-footer">
+        <footer id="footer-principal">
+            <!-- IMAGEN -->
+            <nav id="nav-texto">
+                <h6>S.E.S. cocina</h6>
+                <p id="frase-footer">La cocina no discute teorías, las prueba.</p>
+            </nav>
+
+            <nav id="nav-sitio">
+                <a href="index.html" id="flink-inicio">Inicio</a>
+
+                <a href="recetas.html" id="flink-recetas">Recetas</a>
+
+                <a href="contacto.html" id="flink-contacto" class="link-activo">Contacto</a>
+            </nav>
+
+        </footer>
+    </div>
+</body>
+
+</html>
