@@ -39,7 +39,7 @@ const recetas = [
             { tipoIngrediente: 'mayonesa', nombre: "Mayonesa", cantidad: 1, unidad: "cucharada" }
         ],
         minutos: 15,
-        imagen: "imagenes/Sandwitc-Milanesa.jpg",
+        imagen: "imagenes/Sandwich-Milanesa.jpg",
         pasos: [
             "Cortar el pan al medio y tostar apenas la parte interior si se desea.",
             "Untar ambas caras de la miga con mayonesa.",
