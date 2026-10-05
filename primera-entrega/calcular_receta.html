@@ -21,9 +21,7 @@
 <body onload="mostrarRecetaIndividual(), cantidadPorciones(), recetasCortas();">
     <div id="contenedor-header">
         <header id="header-principal">
-            <a href="lore.html" id="logo-sitio">
-                <img src="imagenes/logo_header.png" alt="Sándwich, Sopa o Ensalada">
-            </a>
+            <img src="imagenes/logo_header.png" alt="Sándwich, Sopa o Ensalada" id="logo-sitio">
             <h1 id="titulo-sitio">Recetario web S.E.S</h1>
             <nav id="nav-principal">
                 <a href="index.html" id="hlink-inicio">Inicio</a>
@@ -78,7 +76,7 @@
                         <input type="number" value="1" id="input-porciones" min="1" size="5"
                             aria-label="Número base de porciones">
                         <button type="button" aria-label="Calcular ingredientes para el número de porciones elegido"
-                            onclick="if (validarPorciones()) { cantidadPorciones(); mostrarReceta(); }">
+                            onclick="if (validarPorciones()) { cantidadPorciones(); mostrarRecetaIndividual(); }">
                             Calcular
                         </button>
                     </div>

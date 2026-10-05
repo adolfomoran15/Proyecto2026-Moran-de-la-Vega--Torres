@@ -97,25 +97,16 @@ header #nav-principal {
 }
 
 header #logo-sitio {
-    margin: 0;
-}
-
-header #logo-sitio a {
-    display: block;
-}
-
-header #logo-sitio img {
     width: 100px;
     height: 100px;
     object-fit: contain;
     display: block;
+    margin: 0;
     transform: rotate(-4deg);
-
-
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-header #logo-sitio img:hover {
+header #logo-sitio:hover {
     transform: rotate(0deg) scale(1.05);
 }
 
@@ -620,7 +611,7 @@ footer #nav-sitio a:focus::after {
     }
 }
 
-.contenedor-form #mensaje {
+.contenedor-form #input-mensaje {
     padding-bottom: 3rem;
 }
 
@@ -661,7 +652,7 @@ footer #nav-sitio a:focus::after {
     margin: 1rem 0 0 1rem;
     aspect-ratio: 4/3;
     overflow: hidden;
-        
+
     img {
         width: 100%;
         height: 100%;
