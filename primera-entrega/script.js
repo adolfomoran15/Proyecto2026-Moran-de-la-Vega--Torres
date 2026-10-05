@@ -332,22 +332,16 @@ const recetas = [
         tipoPlato: "Principal"
     }
 ];
-
+let posicionCarrusel = 0;
 /**
  * Mostrar la receta en la pagina calcular-receta
  * @method mostrarRecetaIndividual
  */
 const mostrarRecetaIndividual = () => {
     let contenidoPasos = "";
-
     const queryString = window.location.search;
-
-
     const urlParams = new URLSearchParams(queryString);
-
-
     const idReceta = urlParams.get('receta');
-
     const infoReceta = recetas.find(receta => receta.id === idReceta);
 
     if (infoReceta == null) {
@@ -541,8 +535,6 @@ const aplicarFiltros = () => {
 }
 
 
-let posicionCarrusel = 0;
-
 /**
  *  Muestra una lista de recetas en el catálogo
  * @method mostrarRecetas
@@ -648,17 +640,18 @@ const moverCarrusel = direccion => {
  * @method filtrarReceta
  */
 const filtrarReceta = () => {
-    const filtrarReceta = () => {
-        const searchWord = document.getElementById("input-buscar-recetas").value;
+    const input = document.getElementById("input-buscar-recetas");
+    const searchWord = input.value.trim();
+    const soloLetras = /^[A-Za-zÀ-ÿñÑ\s]+$/;
 
-        if (searchWord === "") {
-            alert("Escribí el nombre de una receta para buscar.");
-            return;
-        }
+    if (searchWord === "" || !soloLetras.test(searchWord)) {
+        alert("Escribí solo letras para buscar una receta.");
+        input.value = "";
+        return;
+    }
 
-        localStorage.setItem("searchWord", searchWord);
-        window.location.href = "recetas.html";
-    };
+    localStorage.setItem("searchWord", searchWord);
+    window.location.href = "recetas.html";
 };
 
 /**
@@ -726,12 +719,13 @@ const enviarContacto = () => {
     const nombre = document.getElementById('input-nombre');
     const email = document.getElementById('input-email');
     const mensaje = document.getElementById('input-mensaje');
+    const soloLetras = /^[A-Za-zÀ-ÿñÑ\s]+$/;
 
-    if (nombre.value === "") {
-        alert("Ingresá tu nombre");
+    if (nombre.value === "" || !soloLetras.test(nombre.value)) {
+        alert("Ingresá un nombre válido (solo letras).");
         return;
     }
-    if (!email.value.includes("@") || !email.value.includes(".")) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
         alert("Ingresá un email válido.");
         email.value = "";
         return;
