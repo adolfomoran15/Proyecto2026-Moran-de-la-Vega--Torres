@@ -200,7 +200,7 @@ const recetas = [
         destacada: false,
 
         ingredientes: [
-            { tipoIngrediente: 'chorizo', nombre: "Bife de chorizo de 3cm de grosor", cantidad: 250, unidad: "g" },
+            { tipoIngrediente: 'carne', nombre: "Bife de chorizo de 3cm de grosor", cantidad: 250, unidad: "g" },
             { tipoIngrediente: 'condimentos', nombre: "Sal gruesa o parrillera", cantidad: "a gusto", unidad: "" },
             { tipoIngrediente: 'pimienta', nombre: "Pimienta negra recién molida", cantidad: "a gusto", unidad: "" }
         ],
@@ -347,7 +347,7 @@ const mostrarRecetaIndividual = () => {
     if (infoReceta == null) {
         document.getElementById('img-receta').innerHTML = `<img src="imagenes/pregunta.png" alt="signo de pregunta" id="imagen-pregunta">`;
 
-        document.getElementById('categoria-receta').innerText = "Sin categoria";
+        document.getElementById('categoria-receta').innerText = "Sin categoría";
 
         document.getElementById('nombre-plato').innerText = "Sin plato";
 
@@ -382,7 +382,7 @@ const mostrarRecetaIndividual = () => {
 /**
  * Redirigir a la pagina de calcular receta
  * @method verReceta
- * @param idReceta - nombre de la receta
+ * @param {string} idReceta - Id de la receta que se quiere ver
  */
 const verReceta = (idReceta) => {
     window.location.href = `calcular_receta.html?receta=${idReceta}`;
@@ -399,29 +399,28 @@ const cantidadPorciones = () => {
 /**
  * Mostrar los ingredientes teniendo en cuenta la cantidad de porciones que ingresa el usuario
  * @method mostrarIngredientes
- * @param listIngredientes - lista de los ingredientes de una receta
+ * @param {Array} listIngredientes - Lista de los ingredientes de una receta
  */
 const mostrarIngredientes = (listIngredientes) => {
     let contenido = "";
     const cantidad = document.getElementById('input-porciones').value;
     listIngredientes.forEach((ingr, num) => {
-        let total = Math.round(cantidad * parseFloat(listIngredientes[num].cantidad) * 100) / 100;
+        let total = Math.round(cantidad * parseFloat(ingr.cantidad) * 100) / 100;
 
         if (isNaN(total)) {
-            total = "a gusto"
-        };
+            total = "a gusto";
+        }
 
         contenido +=
             `
-                <li aria-label="ingrediente ${listIngredientes[num].nombre}">
+                <li aria-label="ingrediente ${ingr.nombre}">
                     <label for="ingrediente-${num}">
                     <input type="checkbox" id="ingrediente-${num}">
-                    <span class="cantidad-ingrediente">${total} ${listIngredientes[num].unidad}</span>
-                    <span class="nombre-ingrediente"> ${listIngredientes[num].nombre}</span>
+                    <span class="cantidad-ingrediente">${total} ${ingr.unidad}</span>
+                    <span class="nombre-ingrediente"> ${ingr.nombre}</span>
                     </label>
-                </li>`
+                </li>`;
     });
-
     document.getElementById('ingredientes').innerHTML = contenido;
 }
 
@@ -437,7 +436,7 @@ const recetasCortas = () => {
 
     while (numerosUnicos.size < 3) {
 
-        const numero = Math.floor(Math.random() * recetas.length);
+        const numero = Math.floor(Math.random() * otras.length);
         numerosUnicos.add(numero);
     }
 
@@ -447,22 +446,22 @@ const recetasCortas = () => {
 
     const listaRecetas = [otras.at(num1), otras.at(num2), otras.at(num3)];
 
-    listaRecetas.forEach((list, num) => {
+    listaRecetas.forEach((receta) => {
         contenido += `
-                    <article class="receta-corta">
+                     <article class="receta-corta">
                         <div class="contenedor-imagen">
-                            <img src="${listaRecetas[num].imagen}" alt="${listaRecetas[num].nombre}" id="imagen-corta-${listaRecetas[num].id}">
+                            <img src="${receta.imagen}" alt="${receta.nombre}" id="imagen-corta-${receta.id}">
                         </div>
                         <h3>
-                            ${listaRecetas[num].nombre}
+                            ${receta.nombre}
                         </h3>
                         <p>
-                            ${listaRecetas[num].minutos} minutos
+                            ${receta.minutos} minutos
                         </p>
-                        <button type="button" class="boton-ver-receta" onclick="verReceta('${listaRecetas[num].id}')">
+                        <button type="button" class="boton-ver-receta" onclick="verReceta('${receta.id}')">
                         Ver receta</button>
                     </article>
-                    `
+                    `;
     });
 
     document.getElementById('recetas-cortas').innerHTML = contenido;
@@ -723,6 +722,7 @@ const enviarContacto = () => {
 
     if (nombre.value === "" || !soloLetras.test(nombre.value)) {
         alert("Ingresá un nombre válido (solo letras).");
+        nombre.value = "";
         return;
     }
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
