@@ -650,12 +650,13 @@ const moverCarrusel = direccion => {
 const filtrarReceta = () => {
     const searchWord = document.getElementById("input-buscar-recetas").value;
 
-    if (searchWord !== "") {
-        localStorage.setItem("searchWord", searchWord);
+    if (searchWord == "") {
+        alert("Escribí el nombre de una receta para buscar.");
+        return;
     } else {
         localStorage.removeItem("searchWord");
     }
-
+    localStorage.setItem("searchWord", searchWord);
     window.location.href = "recetas.html";
 };
 
