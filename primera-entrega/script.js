@@ -568,7 +568,7 @@ const mostrarRecetas = (lista, idContenedor) => {
 };
 
 /**
- * Carga las recetas en el catalogo
+ * Carga las recetas en el catálogo
  * @method cargarRecetas
  */
 const cargarRecetas = () => {
@@ -580,12 +580,14 @@ const cargarRecetas = () => {
         let nuevaLista = recetas;
 
         if (searchWord) {
-
             nuevaLista = nuevaLista.filter(
                 receta => receta.nombre.toLowerCase().includes(searchWord.toLowerCase())
             );
         }
-
+        if (nuevaLista.length === 0) {
+            alert("No encontramos recetas con esa búsqueda. Te mostramos todas.");
+            nuevaLista = recetas;
+        }
         mostrarRecetas(nuevaLista, "grilla-recetas");
     }
 };
@@ -713,7 +715,6 @@ const validarPorciones = () => {
  * y vacía ese campo. Si todo está bien, confirma el envío y vacía el formulario.
  * @method enviarContacto
  */
-
 const enviarContacto = () => {
     const nombre = document.getElementById('input-nombre');
     const email = document.getElementById('input-email');
