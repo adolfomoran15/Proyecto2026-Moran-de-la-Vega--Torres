@@ -648,16 +648,17 @@ const moverCarrusel = direccion => {
  * @method filtrarReceta
  */
 const filtrarReceta = () => {
-    const searchWord = document.getElementById("input-buscar-recetas").value;
+    const filtrarReceta = () => {
+        const searchWord = document.getElementById("input-buscar-recetas").value;
 
-    if (searchWord == "") {
-        alert("Escribí el nombre de una receta para buscar.");
-        return;
-    } else {
-        localStorage.removeItem("searchWord");
-    }
-    localStorage.setItem("searchWord", searchWord);
-    window.location.href = "recetas.html";
+        if (searchWord === "") {
+            alert("Escribí el nombre de una receta para buscar.");
+            return;
+        }
+
+        localStorage.setItem("searchWord", searchWord);
+        window.location.href = "recetas.html";
+    };
 };
 
 /**
