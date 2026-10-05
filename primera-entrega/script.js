@@ -702,6 +702,11 @@ const validarPorciones = () => {
         input.value = "";
         return false;
     }
+    if (valor > 60) {
+        alert("La cantidad máxima de porciones permitida es 60.");
+        input.value = "";
+        return false;
+    }
     return true;
 };
 
