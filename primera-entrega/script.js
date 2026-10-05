@@ -172,7 +172,7 @@ const recetas = [
 
         ingredientes: [
             { tipoIngrediente: 'pollo', nombre: "Presa de pollo (pata/muslo o pechuga)", cantidad: 1, unidad: "unidad (apx 350g)" },
-            { tipoIngrediente: 'papas', nombre: "Papas grandes", cantidad: 1, unidad: "unidad" },
+            { tipoIngrediente: 'papa', nombre: "Papas grandes", cantidad: 1, unidad: "unidad" },
             { tipoIngrediente: 'limon', nombre: "Limón", cantidad: 0.25, unidad: "unidad" },
             { tipoIngrediente: 'aceite', nombre: "Aceite de oliva", cantidad: 1, unidad: "cucharada" },
             { tipoIngrediente: 'condimentos', nombre: "Romero y tomillo", cantidad: "a gusto", unidad: "" },
@@ -316,7 +316,7 @@ const recetas = [
             { tipoIngrediente: 'carne', nombre: "Nalga o bola de lomo para milanesa", cantidad: 150, unidad: "g" },
             { tipoIngrediente: 'huevo', nombre: "Huevo batido con provenzal", cantidad: 0.5, unidad: "unidad" },
             { tipoIngrediente: 'pan', nombre: "Pan rallado", cantidad: 75, unidad: "g" },
-            { tipoIngrediente: 'papas', nombre: "Papas para el puré", cantidad: 250, unidad: "g" },
+            { tipoIngrediente: 'papa', nombre: "Papas para el puré", cantidad: 250, unidad: "g" },
             { tipoIngrediente: 'leche', nombre: "Leche entera", cantidad: 30, unidad: "ml" },
             { tipoIngrediente: 'manteca', nombre: "Manteca", cantidad: 10, unidad: "g" }
         ],
@@ -348,7 +348,7 @@ const mostrarRecetaIndividual = () => {
 
     const idReceta = urlParams.get('receta');
 
-    let infoReceta = recetas.find(receta => receta.id === idReceta);
+    const infoReceta = recetas.find(receta => receta.id === idReceta);
 
     if (infoReceta == null) {
         document.getElementById('img-receta').innerHTML = `<img src="imagenes/pregunta.png" alt="signo de pregunta" id="imagen-pregunta">`;
@@ -409,7 +409,7 @@ const cantidadPorciones = () => {
  */
 const mostrarIngredientes = (listIngredientes) => {
     let contenido = "";
-    let cantidad = document.getElementById('input-porciones').value;
+    const cantidad = document.getElementById('input-porciones').value;
     listIngredientes.forEach((ingr, num) => {
         let total = Math.round(cantidad * parseFloat(listIngredientes[num].cantidad) * 100) / 100;
 
@@ -437,6 +437,8 @@ const mostrarIngredientes = (listIngredientes) => {
  */
 const recetasCortas = () => {
     let contenido = "";
+    const idActual = new URLSearchParams(window.location.search).get('receta');
+    const otras = recetas.filter(receta => receta.id !== idActual);
     const numerosUnicos = new Set();
 
     while (numerosUnicos.size < 3) {
@@ -449,7 +451,7 @@ const recetasCortas = () => {
 
     const [num1, num2, num3] = arrayTemp;
 
-    let listaRecetas = [recetas.at(num1), recetas.at(num2), recetas.at(num3)];
+    const listaRecetas = [otras.at(num1), otras.at(num2), otras.at(num3)];
 
     listaRecetas.forEach((list, num) => {
         contenido += `
@@ -479,17 +481,17 @@ const recetasCortas = () => {
  */
 const aplicarFiltros = () => {
     let newRecetas = recetas;
-    let categoria = document.getElementById('select-categoria').value;
-    let tiempo = document.getElementById('select-tiempo').value;
-    let teoria = document.getElementById('select-tipo-plato').value;
-    let papa = document.getElementById('check-ing-papa').checked;
-    let tomate = document.getElementById('check-ing-tomate').checked;
-    let queso = document.getElementById('check-ing-queso').checked;
-    let lechuga = document.getElementById('check-ing-lechuga').checked;
-    let carne = document.getElementById('check-ing-carne').checked;
-    let huevo = document.getElementById('check-ing-huevo').checked;
-    let cebolla = document.getElementById('check-ing-cebolla').checked;
-    let harina = document.getElementById('check-ing-harina').checked;
+    const categoria = document.getElementById('select-categoria').value;
+    const tiempo = document.getElementById('select-tiempo').value;
+    const teoria = document.getElementById('select-tipo-plato').value;
+    const papa = document.getElementById('check-ing-papa').checked;
+    const tomate = document.getElementById('check-ing-tomate').checked;
+    const queso = document.getElementById('check-ing-queso').checked;
+    const lechuga = document.getElementById('check-ing-lechuga').checked;
+    const carne = document.getElementById('check-ing-carne').checked;
+    const huevo = document.getElementById('check-ing-huevo').checked;
+    const cebolla = document.getElementById('check-ing-cebolla').checked;
+    const harina = document.getElementById('check-ing-harina').checked;
 
     if (categoria !== "todas") {
         newRecetas = newRecetas.filter(receta => receta.tipoPlato.toLowerCase() === categoria.toLowerCase());
@@ -499,10 +501,10 @@ const aplicarFiltros = () => {
         newRecetas = newRecetas.filter((receta) => {
             switch (tiempo) {
                 case "rapido":
-                    return receta.minutos <= 30;
+                    return receta.minutos < 30;
 
                 case "medio":
-                    return receta.minutos > 30 && receta.minutos <= 60;
+                    return receta.minutos >= 30 && receta.minutos <= 60;
 
                 case "largo":
                     return receta.minutos > 60;
@@ -518,7 +520,7 @@ const aplicarFiltros = () => {
         );
     }
 
-    let ingredientesArray = [];
+    const ingredientesArray = [];
     papa ? ingredientesArray.push("papa") : "";
     tomate ? ingredientesArray.push("tomate") : "";
     queso ? ingredientesArray.push("queso") : "";
@@ -582,8 +584,8 @@ const cargarRecetas = () => {
     const grilla = document.getElementById("grilla-recetas");
     if (grilla) {
 
-        let searchWord = localStorage.getItem("searchWord");
-
+        const searchWord = localStorage.getItem("searchWord");
+        localStorage.removeItem("searchWord");
         let nuevaLista = recetas;
 
         if (searchWord) {
@@ -646,7 +648,7 @@ const moverCarrusel = direccion => {
  * @method filtrarReceta
  */
 const filtrarReceta = () => {
-    let searchWord = document.getElementById("input-buscar-recetas").value;
+    const searchWord = document.getElementById("input-buscar-recetas").value;
 
     if (searchWord !== "") {
         localStorage.setItem("searchWord", searchWord);

@@ -683,7 +683,7 @@ footer #nav-sitio a:focus::after {
     width: fit-content;
 }
 
-.etiqueta-plato h3 {
+#nombre-plato {
     margin: 0;
     font-size: 3rem;
     font-weight: 600;
@@ -691,14 +691,14 @@ footer #nav-sitio a:focus::after {
     color: var(--color-texto);
 }
 
-.etiqueta-plato p {
+#descripcion-receta {
     margin: 0;
     font-size: 1rem;
     font-weight: 400;
     color: var(--color-texto);
 }
 
-.etiqueta-plato hr {
+#texto-receta hr {
     width: 100%;
     border: 0;
     border-top: 1px solid var(--color-borde);
