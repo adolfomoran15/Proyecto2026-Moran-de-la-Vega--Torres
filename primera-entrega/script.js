@@ -200,7 +200,7 @@ const recetas = [
         destacada: false,
 
         ingredientes: [
-            { tipoIngrediente: 'chorizo', nombre: "Bife de chorizo de 3cm de grosor", cantidad: 250, unidad: "g" },
+            { tipoIngrediente: 'carne', nombre: "Bife de chorizo de 3cm de grosor", cantidad: 250, unidad: "g" },
             { tipoIngrediente: 'condimentos', nombre: "Sal gruesa o parrillera", cantidad: "a gusto", unidad: "" },
             { tipoIngrediente: 'pimienta', nombre: "Pimienta negra recién molida", cantidad: "a gusto", unidad: "" }
         ],
@@ -332,28 +332,22 @@ const recetas = [
         tipoPlato: "Principal"
     }
 ];
-
+let posicionCarrusel = 0;
 /**
  * Mostrar la receta en la pagina calcular-receta
  * @method mostrarRecetaIndividual
  */
 const mostrarRecetaIndividual = () => {
     let contenidoPasos = "";
-
     const queryString = window.location.search;
-
-
     const urlParams = new URLSearchParams(queryString);
-
-
     const idReceta = urlParams.get('receta');
-
     const infoReceta = recetas.find(receta => receta.id === idReceta);
 
     if (infoReceta == null) {
         document.getElementById('img-receta').innerHTML = `<img src="imagenes/pregunta.png" alt="signo de pregunta" id="imagen-pregunta">`;
 
-        document.getElementById('categoria-receta').innerText = "Sin categoria";
+        document.getElementById('categoria-receta').innerText = "Sin categoría";
 
         document.getElementById('nombre-plato').innerText = "Sin plato";
 
@@ -388,7 +382,7 @@ const mostrarRecetaIndividual = () => {
 /**
  * Redirigir a la pagina de calcular receta
  * @method verReceta
- * @param idReceta - nombre de la receta
+ * @param {string} idReceta - Id de la receta que se quiere ver
  */
 const verReceta = (idReceta) => {
     window.location.href = `calcular_receta.html?receta=${idReceta}`;
@@ -405,29 +399,28 @@ const cantidadPorciones = () => {
 /**
  * Mostrar los ingredientes teniendo en cuenta la cantidad de porciones que ingresa el usuario
  * @method mostrarIngredientes
- * @param listIngredientes - lista de los ingredientes de una receta
+ * @param {Array} listIngredientes - Lista de los ingredientes de una receta
  */
 const mostrarIngredientes = (listIngredientes) => {
     let contenido = "";
     const cantidad = document.getElementById('input-porciones').value;
     listIngredientes.forEach((ingr, num) => {
-        let total = Math.round(cantidad * parseFloat(listIngredientes[num].cantidad) * 100) / 100;
+        let total = Math.round(cantidad * parseFloat(ingr.cantidad) * 100) / 100;
 
         if (isNaN(total)) {
-            total = "a gusto"
-        };
+            total = "a gusto";
+        }
 
         contenido +=
             `
-                <li aria-label="ingrediente ${listIngredientes[num].nombre}">
+                <li aria-label="ingrediente ${ingr.nombre}">
                     <label for="ingrediente-${num}">
                     <input type="checkbox" id="ingrediente-${num}">
-                    <span class="cantidad-ingrediente">${total} ${listIngredientes[num].unidad}</span>
-                    <span class="nombre-ingrediente"> ${listIngredientes[num].nombre}</span>
+                    <span class="cantidad-ingrediente">${total} ${ingr.unidad}</span>
+                    <span class="nombre-ingrediente"> ${ingr.nombre}</span>
                     </label>
-                </li>`
+                </li>`;
     });
-
     document.getElementById('ingredientes').innerHTML = contenido;
 }
 
@@ -443,7 +436,7 @@ const recetasCortas = () => {
 
     while (numerosUnicos.size < 3) {
 
-        const numero = Math.floor(Math.random() * recetas.length);
+        const numero = Math.floor(Math.random() * otras.length);
         numerosUnicos.add(numero);
     }
 
@@ -453,22 +446,22 @@ const recetasCortas = () => {
 
     const listaRecetas = [otras.at(num1), otras.at(num2), otras.at(num3)];
 
-    listaRecetas.forEach((list, num) => {
+    listaRecetas.forEach((receta) => {
         contenido += `
-                    <article class="receta-corta">
+                     <article class="receta-corta">
                         <div class="contenedor-imagen">
-                            <img src="${listaRecetas[num].imagen}" alt="${listaRecetas[num].nombre}" id="imagen-corta-${listaRecetas[num].id}">
+                            <img src="${receta.imagen}" alt="${receta.nombre}" id="imagen-corta-${receta.id}">
                         </div>
                         <h3>
-                            ${listaRecetas[num].nombre}
+                            ${receta.nombre}
                         </h3>
                         <p>
-                            ${listaRecetas[num].minutos} minutos
+                            ${receta.minutos} minutos
                         </p>
-                        <button type="button" class="boton-ver-receta" onclick="verReceta('${listaRecetas[num].id}')">
+                        <button type="button" class="boton-ver-receta" onclick="verReceta('${receta.id}')">
                         Ver receta</button>
                     </article>
-                    `
+                    `;
     });
 
     document.getElementById('recetas-cortas').innerHTML = contenido;
@@ -541,8 +534,6 @@ const aplicarFiltros = () => {
 }
 
 
-let posicionCarrusel = 0;
-
 /**
  *  Muestra una lista de recetas en el catálogo
  * @method mostrarRecetas
@@ -577,7 +568,7 @@ const mostrarRecetas = (lista, idContenedor) => {
 };
 
 /**
- * Carga las recetas en el catalogo
+ * Carga las recetas en el catálogo
  * @method cargarRecetas
  */
 const cargarRecetas = () => {
@@ -589,12 +580,14 @@ const cargarRecetas = () => {
         let nuevaLista = recetas;
 
         if (searchWord) {
-
             nuevaLista = nuevaLista.filter(
                 receta => receta.nombre.toLowerCase().includes(searchWord.toLowerCase())
             );
         }
-
+        if (nuevaLista.length === 0) {
+            alert("No encontramos recetas con esa búsqueda. Te mostramos todas.");
+            nuevaLista = recetas;
+        }
         mostrarRecetas(nuevaLista, "grilla-recetas");
     }
 };
@@ -648,17 +641,18 @@ const moverCarrusel = direccion => {
  * @method filtrarReceta
  */
 const filtrarReceta = () => {
-    const filtrarReceta = () => {
-        const searchWord = document.getElementById("input-buscar-recetas").value;
+    const input = document.getElementById("input-buscar-recetas");
+    const searchWord = input.value.trim();
+    const soloLetras = /^[A-Za-zÀ-ÿñÑ\s]+$/;
 
-        if (searchWord === "") {
-            alert("Escribí el nombre de una receta para buscar.");
-            return;
-        }
+    if (searchWord === "" || !soloLetras.test(searchWord)) {
+        alert("Escribí solo letras para buscar una receta.");
+        input.value = "";
+        return;
+    }
 
-        localStorage.setItem("searchWord", searchWord);
-        window.location.href = "recetas.html";
-    };
+    localStorage.setItem("searchWord", searchWord);
+    window.location.href = "recetas.html";
 };
 
 /**
@@ -721,17 +715,18 @@ const validarPorciones = () => {
  * y vacía ese campo. Si todo está bien, confirma el envío y vacía el formulario.
  * @method enviarContacto
  */
-
 const enviarContacto = () => {
     const nombre = document.getElementById('input-nombre');
     const email = document.getElementById('input-email');
     const mensaje = document.getElementById('input-mensaje');
+    const soloLetras = /^[A-Za-zÀ-ÿñÑ\s]+$/;
 
-    if (nombre.value === "") {
-        alert("Ingresá tu nombre");
+    if (nombre.value === "" || !soloLetras.test(nombre.value)) {
+        alert("Ingresá un nombre válido (solo letras).");
+        nombre.value = "";
         return;
     }
-    if (!email.value.includes("@") || !email.value.includes(".")) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
         alert("Ingresá un email válido.");
         email.value = "";
         return;
