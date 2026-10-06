@@ -975,7 +975,7 @@ footer #nav-sitio a:focus::after {
     /*minutos que tarda*/
     margin: 0;
     font-size: 0.8rem;
-    color: var(--color-secundario);
+    color: var(--color-header);
     font-weight: 600;
 }
 
