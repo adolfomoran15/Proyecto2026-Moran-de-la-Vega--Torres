@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="author" content="Adolfo Moran de la Vega, Franco Torres">
-    <meta name="description" content="Recetario web que te ayuda a decidir que cocinar. 
+    <meta name="description" content="Recetario web que te ayuda a decidir qué cocinar. 
         Cuenta con calculadora de porciones, checklist de ingredientes y distintos filtros">
-    <meta name="keywords" content="recetas, cocina, sopa, sandwich, ensalada">
+    <meta name="keywords" content="recetas, cocina, sopa, sándwich, ensalada">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet">
@@ -48,22 +48,24 @@
             <section id="recetas-destacadas">
                 <h2>Recetas destacadas</h2>
                 <div id="carrusel-destacadas">
-                    <button type="button" id="boton-flecha-izquierda" onclick="moverCarrusel('izquierda')">‹</button>
+                    <button type="button" id="boton-flecha-izquierda" aria-label="Receta anterior"
+                        onclick="moverCarrusel('izquierda')">‹</button>
                     <div id="ventana-destacadas">
                         <div id="lista-destacadas">
                         </div>
                     </div>
-                    <button type="button" id="boton-flecha-derecha" onclick="moverCarrusel('derecha')">›</button>
+                    <button type="button" id="boton-flecha-derecha" aria-label="Receta siguiente"
+                        onclick="moverCarrusel('derecha')">›</button>
                 </div>
             </section>
         </div>
     </main>
     <div id="contenedor-footer">
         <footer id="footer-principal">
-            <nav id="nav-texto">
+            <div id="nav-texto">
                 <h6>S.E.S. cocina</h6>
                 <p id="frase-footer">La cocina no discute teorías, las prueba.</p>
-            </nav>
+            </div>
 
             <nav id="nav-sitio">
                 <a href="index.html" id="flink-inicio">Inicio</a>
