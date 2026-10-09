@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="author" content="Adolfo Moran de la Vega, Franco Torres">
     <meta name="description" content="Calculadora de porciones para las diferentes recetas">
-    <meta name="keywords" content="recetas, cocina, sopa, sandwich, ensalada">
+    <meta name="keywords" content="recetas, cocina, sopa, sándwich, ensalada">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
     <link
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
         rel="stylesheet">
@@ -71,9 +71,10 @@
                         Calcular Porciones
                     </h5>
                     <div class="controles-calculadora">
-                        <label for="input-porciones" class="label-calculadora">Calculadora</label>
+                        <label for="input-porciones" class="label-calculadora">Cantidad de porciones
+                        </label>
                         <input type="number" value="1" id="input-porciones" min="1" size="5"
-                            aria-label="Número base de porciones" max="60">
+                            placeholder="Ingresá las porciones" aria-label="Número base de porciones" max="60">
                         <button type="button" aria-label="Calcular ingredientes para el número de porciones elegido"
                             onclick="if (validarPorciones()) { cantidadPorciones(); mostrarRecetaIndividual(); }">
                             Calcular
@@ -118,12 +119,10 @@
 
     <div id="contenedor-footer">
         <footer id="footer-principal">
-
-            <nav id="nav-texto">
+            <div id="nav-texto">
                 <h6>S.E.S. cocina</h6>
                 <p id="frase-footer">La cocina no discute teorías, las prueba.</p>
-            </nav>
-
+            </div>
             <nav id="nav-sitio">
                 <a href="index.html" id="flink-inicio">Inicio</a>
 
