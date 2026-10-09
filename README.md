@@ -1,4 +1,4 @@
-# Sopa, Sándwich o Ensalada 🍲🥪🥗
+# Recetario web S.E.S 🍲🥪🥗
 
 _La teoría culinaria que todavía no resolvimos._
 
@@ -41,4 +41,4 @@ _La teoría culinaria que todavía no resolvimos._
 
 🔗 **Link a GitHub Pages:** [Recetario S.E.S](https://adolfomoran15.github.io/Proyecto2026-Moran-de-la-Vega-Torres/primera-entrega/index.html)
 
-🔗 **Mockup (Figma):** [Recetario S.E.S (mock up)](https://top-grit-76826006.figma.site/)
+🔗 **Mockup (Figma):** [Recetario S.E.S (mockup)](https://top-grit-76826006.figma.site/)
