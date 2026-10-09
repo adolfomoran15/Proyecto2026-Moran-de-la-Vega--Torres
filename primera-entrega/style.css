@@ -10,6 +10,7 @@
 
     --fuente-titulos: 'Playfair Display', serif;
     --fuente-texto: 'Montserrat', sans-serif;
+    --fuente-decorativa: 'Cormorant Garamond', serif;
 }
 
 
@@ -107,7 +108,7 @@ header #logo-sitio:hover {
 }
 
 #titulo-sitio {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--fuente-decorativa);
     font-size: 2rem;
     font-weight: 600;
     letter-spacing: 0.03em;
@@ -220,7 +221,7 @@ footer #nav-sitio a:focus::after {
 }
 
 #texto-hero h2 {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: var(--fuente-decorativa);
     font-size: 3.2rem;
     font-weight: 600;
     font-style: italic;
@@ -299,7 +300,9 @@ footer #nav-sitio a:focus::after {
 
 .boton-ver-receta {
     font-family: var(--fuente-texto);
-    margin: 0 1.5rem 1.5rem;
+    margin-inline: 1.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: auto;
     padding: 0.7rem 1.2rem;
     border: none;
     border-radius: 5px;
@@ -307,7 +310,6 @@ footer #nav-sitio a:focus::after {
     color: var(--color-blanco);
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-top: auto;
 }
 
 .boton-ver-receta:hover {
@@ -404,7 +406,7 @@ footer #nav-sitio a:focus::after {
 
 #contenedor-filtros {
     width: 21.5%;
-    padding: 2rem 0rem 2rem 3rem;
+    padding: 2rem 0 2rem 3rem;
     display: flex;
     flex-direction: column;
 }
