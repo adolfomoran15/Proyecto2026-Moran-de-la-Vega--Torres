@@ -1,4 +1,4 @@
-# Recetario web S.E.S 🍲🥪🥗
+# Recetario S.E.S 🍲🥪🥗
 
 _La teoría culinaria que todavía no resolvimos._
 
